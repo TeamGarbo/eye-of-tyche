@@ -25,7 +25,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void scan(View view){
-
+        barcodeHandler.showScanner();
     }
 
     //Getting the scan results
