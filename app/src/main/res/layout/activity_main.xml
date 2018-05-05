@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
     tools:context="teamgarbo.github.io.eyeoftyche.MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="400dp"
-        android:layout_height="582dp"
-        app:srcCompat="@android:color/holo_orange_light"
-        tools:layout_editor_absoluteX="-15dp" />
 
     <TextView
         android:id="@+id/textView"
