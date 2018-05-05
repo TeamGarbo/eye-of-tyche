@@ -3,6 +3,7 @@ package teamgarbo.github.io.eyeoftyche;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -21,7 +22,10 @@ public class GameActivity extends AppCompatActivity {
 
         barcodeHandler = new BarcodeHandler(this);
     }
+    
+    public void scan(View view){
 
+    }
 
 
     //Getting the scan results

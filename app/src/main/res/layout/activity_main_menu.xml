@@ -11,8 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
         android:onClick="start"
         android:text="Start"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/buttonSettings"
         app:layout_constraintStart_toStartOf="@+id/buttonSettings" />
 
@@ -20,10 +22,12 @@
         android:id="@+id/buttonSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="132dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginTop="268dp"
+        android:background="@color/colorPrimary"
         android:onClick="settings"
         android:text="Settings"
+        android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,8 +36,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
         android:onClick="help"
         android:text="Help"
+        android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="@+id/buttonSettings"
         app:layout_constraintTop_toBottomOf="@+id/buttonSettings" />
 
@@ -42,8 +48,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
         android:onClick="exit"
         android:text="Exit"
+        android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="@+id/buttonHelp"
         app:layout_constraintTop_toBottomOf="@+id/buttonHelp" />
 
@@ -53,6 +61,14 @@
         android:layout_height="567dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_bright" />
+        app:srcCompat="@android:color/holo_orange_light" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/eye"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </android.support.constraint.ConstraintLayout>
