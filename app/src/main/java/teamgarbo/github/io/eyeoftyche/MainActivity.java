@@ -6,6 +6,8 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import teamgarbo.github.io.eyeoftyche.Engine.Engine;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,10 +27,15 @@ public class MainActivity extends AppCompatActivity {
         //Initialise global variables, get permissions, etc.
         try {
             Thread.sleep(500);
-            initMainMenu();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        MainActivity.this.runOnUiThread(new Runnable() {
+            public void run() {
+                initMainMenu();
+            }
+        });
     }
 
     public void initMainMenu(){

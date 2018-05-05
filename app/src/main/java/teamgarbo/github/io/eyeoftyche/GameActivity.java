@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import teamgarbo.github.io.eyeoftyche.Engine.Engine;
+
 public class GameActivity extends AppCompatActivity {
 
     Engine engine;
@@ -25,8 +27,17 @@ public class GameActivity extends AppCompatActivity {
 
     public void scan(View view){
         barcodeHandler.showScanner();
+        parseBarcode(barcodeHandler.getLastBarcode());
     }
 
+    public void parseBarcode(String barcode){
+        if(!engine.getPastCodes().contains(barcode)){
+            engine.getPastCodes().add(barcode);
+        }
+        else{
+            //some form of penalisation
+        }
+    }
 
     //Getting the scan results
     @Override
