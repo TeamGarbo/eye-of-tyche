@@ -33,13 +33,13 @@
         android:text="HELLO!"
         android:textAlignment="center"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOption1"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonOption1"
+        android:id="@+id/buttonInventory"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonOption3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOption1" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonInventory" />
 
     <Button
         android:id="@+id/buttonOption3"

@@ -30,6 +30,9 @@
         <activity android:name=".PlayerMenuActivity" />
         <activity android:name="com.google.android.gms.samples.vision.barcodereader.BarcodeCaptureActivity" />
         <activity android:name=".CreatePlayerActivity"></activity>
+        <activity android:name=".PlayerInventoryActivity" />
+        <activity android:name=".PlayerSpellBookActivity" />
+        <activity android:name=".PlayerStatsActivity"></activity>
     </application>
 
 </manifest>
