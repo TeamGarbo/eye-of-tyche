@@ -2,6 +2,7 @@ package teamgarbo.github.io.eyeoftyche;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -18,4 +19,7 @@ public class GameActivity extends AppCompatActivity {
         engine = Engine.getInstance();
     }
 
+    public void scan(View view){
+
+    }
 }
