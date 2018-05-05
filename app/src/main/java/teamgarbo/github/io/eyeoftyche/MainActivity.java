@@ -37,4 +37,6 @@ public class MainActivity extends AppCompatActivity {
         // Vibrate for 500 milliseconds
         v.vibrate(millis);
     }
+
+
 }
