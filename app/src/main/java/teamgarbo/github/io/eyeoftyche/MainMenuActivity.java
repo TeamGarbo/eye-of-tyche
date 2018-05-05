@@ -36,5 +36,10 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        System.exit(0);
+    }
 
 }
