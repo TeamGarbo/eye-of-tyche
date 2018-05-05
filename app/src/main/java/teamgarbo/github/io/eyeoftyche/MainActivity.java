@@ -23,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
         Engine.getInstance();
         vibrate(500);
         //Initialise global variables, get permissions, etc.
-
-        initMainMenu();
+        try {
+            Thread.sleep(500);
+            initMainMenu();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initMainMenu(){
