@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(){
-        Controller.getInstance();
+        Engine.getInstance();
         vibrate(500);
         //Initialise global variables, get permissions, etc.
 

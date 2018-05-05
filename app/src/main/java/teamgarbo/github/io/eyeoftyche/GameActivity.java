@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 public class GameActivity extends AppCompatActivity {
 
+    Engine engine;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -12,5 +14,8 @@ public class GameActivity extends AppCompatActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        engine = Engine.getInstance();
     }
+
 }
