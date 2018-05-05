@@ -1,4 +1,4 @@
-package teamgarbo.github.io.eye_of_tyche;
+package teamgarbo.github.io.eyeoftyche;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
