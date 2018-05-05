@@ -9,7 +9,6 @@ public class GameActivity extends AppCompatActivity {
     Engine engine;
     BarcodeHandler barcodeHandler;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +21,8 @@ public class GameActivity extends AppCompatActivity {
 
         barcodeHandler = new BarcodeHandler(this);
     }
+
+
 
     //Getting the scan results
     @Override

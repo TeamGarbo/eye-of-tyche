@@ -26,7 +26,8 @@
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".PlayerMenuActivity"></activity>
     </application>
 
 </manifest>
