@@ -27,7 +27,14 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void exit(View view){
+        finish();
         System.exit(0);
     }
+
+    public void help(View view){
+        Intent myIntent = new Intent(MainMenuActivity.this, HelpActivity.class);
+        startActivity(myIntent);
+    }
+
 
 }

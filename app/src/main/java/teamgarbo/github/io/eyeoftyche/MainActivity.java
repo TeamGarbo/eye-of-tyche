@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void init(){
         Controller.getInstance();
-        vibrate(1000);
+        vibrate(500);
         //Initialise global variables, get permissions, etc.
 
         initMainMenu();

@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context="teamgarbo.github.io.eyeoftyche.MainMenuActivity">
 
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="start"
+        android:text="Start"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSettings"
+        app:layout_constraintStart_toStartOf="@+id/buttonSettings" />
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginTop="200dp"
+        android:onClick="settings"
+        android:text="Settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="help"
+        android:text="Help"
+        app:layout_constraintStart_toStartOf="@+id/buttonSettings"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSettings" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="exit"
+        android:text="Exit"
+        app:layout_constraintStart_toStartOf="@+id/buttonHelp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHelp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="374dp"
+        android:layout_height="567dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/holo_blue_bright" />
+
 </android.support.constraint.ConstraintLayout>
