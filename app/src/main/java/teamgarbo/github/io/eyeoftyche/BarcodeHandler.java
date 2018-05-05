@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 
-import google.android.gms.samples.vision.barcodereader.BarcodeCaptureActivity;
+import com.google.android.gms.samples.vision.barcodereader.BarcodeCaptureActivity;
 
 /**
  * Created by hercu on 05-May-18.

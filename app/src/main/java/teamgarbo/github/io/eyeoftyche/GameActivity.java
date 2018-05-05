@@ -22,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
 
         barcodeHandler = new BarcodeHandler(this);
     }
-    
+
     public void scan(View view){
 
     }
