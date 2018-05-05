@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package google.android.gms.samples.vision.barcodereader;
+package com.google.android.gms.samples.vision.barcodereader;
 
 import android.content.Context;
 import android.support.annotation.UiThread;

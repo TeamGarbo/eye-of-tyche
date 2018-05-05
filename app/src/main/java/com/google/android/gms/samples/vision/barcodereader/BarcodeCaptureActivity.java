@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package google.android.gms.samples.vision.barcodereader;
+package com.google.android.gms.samples.vision.barcodereader;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -42,7 +42,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.mallocc.caloriecompanion.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -55,6 +54,9 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+
+import teamgarbo.github.io.eyeoftyche.R;
+
 
 /**
  * Activity for the multi-tracker app.  This app detects barcodes and displays the value with the

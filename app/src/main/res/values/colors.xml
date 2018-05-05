@@ -3,4 +3,31 @@
     <color name="colorPrimary">#00000F</color>
     <color name="colorPrimaryDark">#00000F</color>
     <color name="colorAccent">#FFFFFF</color>
+    <color name="white">#ffffff</color>
+
+    <color name="offWhite">#eeeeee</color>
+
+    <color name="grey">#c8c8c8</color>
+
+    <color name="black">#000000</color>
+
+    <color name="offBlack">#222222</color>
+
+    <color name="colorAccentOpposite">#ff3000</color>
+
+    <color name="roomTextColour">#55bb55</color>
+
+    <color name="categoryTextColour">#5555ff</color>
+
+    <color name="functionTextColour">#0088ff</color>
+
+    <color name="containerTextColour">#cc7700</color>
+
+    <color name="itemTextColour">#aa0000</color>
+
+    <color name="confirmationButtons">#009900</color>
+
+    <color name="transparent">#00ffffff</color>
+
+    <color name="red">#ff0000</color>
 </resources>
