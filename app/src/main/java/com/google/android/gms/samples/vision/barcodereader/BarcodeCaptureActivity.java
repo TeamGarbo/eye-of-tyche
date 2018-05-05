@@ -119,6 +119,9 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
 
         // added
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 
     /**

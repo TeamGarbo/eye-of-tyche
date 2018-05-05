@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:srcCompat="@android:color/holo_orange_light"
+    android:background="@android:color/holo_orange_light"
     tools:context="teamgarbo.github.io.eyeoftyche.PlayerMenuActivity">
 
     <LinearLayout
@@ -20,19 +20,21 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
             android:text="Player Menu"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textStyle="bold"
-            android:layout_marginBottom="50dp"/>
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/buttonOption1"
+            android:id="@+id/buttonInventory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="9dp"
             android:background="@color/colorPrimary"
-            android:text="Option 1"
+            android:onClick="showInventory"
+            android:text="Inventory"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,12 +42,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
-            android:id="@+id/buttonOption"
+            android:id="@+id/buttonSpellBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="9dp"
             android:background="@color/colorPrimary"
-            android:text="Option 1"
+            android:onClick="showSpellBook"
+            android:text="Spell Book"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,12 +56,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
-            android:id="@+id/buttonOption5"
+            android:id="@+id/buttonStats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="9dp"
             android:background="@color/colorPrimary"
-            android:text="Option 1"
+            android:onClick="showStats"
+            android:text="Stats"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
             app:layout_constraintEnd_toEndOf="parent"
