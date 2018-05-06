@@ -148,4 +148,20 @@ public class Player {
     public void setCurrentSpell(Spell currentSpell) {
         this.currentSpell = currentSpell;
     }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
 }

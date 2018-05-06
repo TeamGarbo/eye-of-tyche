@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 import teamgarbo.github.io.eyeoftyche.Engine.ContentGenerator;
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
 import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Inventory;
+import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Armour;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Consumable;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
@@ -174,6 +175,37 @@ public class PlayerInventoryActivity extends AppCompatActivity {
 
     public void useItem(Item item)
     {
+        Player player = Engine.getInstance().getPlayer();
+
+        if(item instanceof Consumable)
+        {
+            Consumable consumable = (Consumable) item;
+            player.setHealth(player.getHealth() + consumable.getHealth());
+            if(player.getHealth() > player.getMaxHealth())
+                player.setHealth(player.getMaxHealth());
+            player.setMana(player.getMana() + consumable.getMana());
+            if(player.getMana() > player.getMaxMana())
+                player.setMana(player.getMaxMana());
+
+
+        }
+        if(item instanceof Weapon)
+        {
+            Weapon weapon = (Weapon) item;
+            player.setDex(player.getDex() + weapon.getDex());
+            player.setStr(player.getStr() + weapon.getStr());
+        }
+
+        if(item instanceof Armour)
+        {
+            Armour armour = (Armour) item;
+            player.setMaxHealth(player.getMaxHealth() + armour.getHealth());
+            player.setMaxMana(player.getMaxMana() + armour.getMana());
+        }
+
+        Engine.getInstance().getPlayer().removeItem(item);
+        inventoryAdapter.setObjects(Engine.getInstance().getPlayer().getInventory());
+        inventoryAdapter.notifyDataSetChanged();
 
     }
 
