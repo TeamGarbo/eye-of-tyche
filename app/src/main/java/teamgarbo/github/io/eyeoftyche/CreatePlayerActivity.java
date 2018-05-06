@@ -1,6 +1,7 @@
 package teamgarbo.github.io.eyeoftyche;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,7 +58,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
     public void setWorldSeed(View view){
         barcodeHandlerWorld.showScanner();
         FloatingActionButton button = ((FloatingActionButton) findViewById(R.id.scan_cp1));
-        button.setBackgroundColor(getResources().getColor(R.color.green));
+        button.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
         button.setEnabled(false);
         worldScanned = true;
     }
@@ -65,7 +66,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
     public void setStatsSeed(View view){
         barcodeHandlerStats.showScanner();
         FloatingActionButton button = ((FloatingActionButton) findViewById(R.id.scan_cp2));
-        button.setBackgroundColor(getResources().getColor(R.color.green));
+        button.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
         button.setEnabled(false);
         statsScanned = true;
     }
