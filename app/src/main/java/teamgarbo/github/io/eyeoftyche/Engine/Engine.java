@@ -75,6 +75,10 @@ public class Engine {
             return null;
     }
 
+    public Room getCurrentRoom(){
+        return world.currentRoom;
+    }
+
     public Player getPlayer() {
         return player;
     }
