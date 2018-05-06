@@ -141,13 +141,25 @@ public class ContentGenerator {
         return getAdjective(seed) + " " + Globals.con[number];
     }
 
+    public static String getSpellName(String seed){
+        int number = getInteger(seed,2,Globals.attacks.length-1);
+        return getElementType(seed) + " " + Globals.attacks[number];
+    }
+
+    public static String getElementType(String seed){
+        int number = getInteger(seed,2,Globals.elements.length-1);
+        return getAdjective(seed) + " " + Globals.elements[number];
+    }
+
+    
+
     static public Spell generateSpell(String seed)
     {
         Log.e(TAG, seed+"generateSpell");
         int health = getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount());
         int mana = getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount());
 
-        return new Spell(health, mana, "Spell", seed);
+        return new Spell(health, mana, getSpellName(seed), seed);
     }
 
     static public void regenerateItem(String seed, Spell spell)
