@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -101,13 +103,13 @@ public class GameActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Item item = (Item) adapterView.getItemAtPosition(i);
+                final Item item = (Item) adapterView.getItemAtPosition(i);
                 if (item != null)
                 {
                     engine.getPlayer().addItem(item);
                     GameActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            appendText("Item obtained!");
+                            appendText(item.getName() + " obtained!");
                         }
                     });
 
@@ -146,12 +148,12 @@ public class GameActivity extends AppCompatActivity {
                     engine.progressRoom(room);
                     GameActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            setConsoleText("");
-                            appendText("Progressed room! \n");
-                            appendText("Desciption: " + engine.getCurrentRoom().getDescription() + "\n");
-                            appendText("Mobs: " + engine.getCurrentRoom().getMobs() + "\n");
-                            appendText("NPCs: " + engine.getCurrentRoom().getNpcs() + "\n");
-                            appendText("Outside: " + engine.getCurrentRoom().isOutside() + "\n");
+                            setConsoleText(
+                            "Progressed room!"+'\n' +
+                                    "Desciption: " + engine.getCurrentRoom().getDescription()+'\n' +
+                                    "Mobs: " + engine.getCurrentRoom().getMobs() +'\n' +
+                                    "NPCs: " + engine.getCurrentRoom().getNpcs() +'\n' +
+                                    "Outside: " + engine.getCurrentRoom().isOutside());
 
                         }
                     });
@@ -182,7 +184,8 @@ public class GameActivity extends AppCompatActivity {
 
     public void appendText(String message)
     {
-        TextView console = (TextView) findViewById(R.id.text_console);
+        EditText console = (EditText) findViewById(R.id.TEXT_STATUS_ID);
+        console.setMovementMethod(new ScrollingMovementMethod());
         console.setText(console.getText().toString() + '\n' + message);
     }
 
@@ -194,12 +197,12 @@ public class GameActivity extends AppCompatActivity {
     public void updateConsoleText(){
         GameActivity.this.runOnUiThread(new Runnable() {
             public void run() {
-                setConsoleText("");
-                appendText("Progressed room! \n");
-                appendText("Desciption: " + engine.getCurrentRoom().getDescription() + "\n");
-                appendText("Mobs: " + engine.getCurrentRoom().getMobs() + "\n");
-                appendText("NPCs: " + engine.getCurrentRoom().getNpcs() + "\n");
-                appendText("Outside: " + engine.getCurrentRoom().isOutside() + "\n");
+                setConsoleText(
+                        "Progressed room!"+'\n' +
+                                "Desciption: " + engine.getCurrentRoom().getDescription()+ '\n' +
+                                "Mobs: " + engine.getCurrentRoom().getMobs() +'\n' +
+                                "NPCs: " + engine.getCurrentRoom().getNpcs() +'\n' +
+                                "Outside: " + engine.getCurrentRoom().isOutside());
 
             }
         });
