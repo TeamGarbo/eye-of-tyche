@@ -66,11 +66,11 @@ public class ContentGenerator {
         int itemNumber = getInteger(seed, 0, 3);
         switch (itemNumber) {
             case Globals.ITEM_ARMOUR:
-                return new Armour(getInteger(seed, 1, 10), getArmourName(seed), getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount()));
+                return new Armour(getInteger(seed, 1, 10), getArmourName(seed), getInteger(seed, 6, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 1, Engine.getInstance().getWorld().getRoomCount()));
             case Globals.ITEM_CONSUMABLE:
                 return new Consumable(getInteger(seed, 1, 10), getConsumableName(seed), getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount()));
             case Globals.ITEM_WEAPON:
-                return new Weapon(getInteger(seed, 1, 10), getWeaponName(seed), getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount()));
+                return new Weapon(getInteger(seed, 1, 10), getWeaponName(seed), getInteger(seed, 4, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 5, Engine.getInstance().getWorld().getRoomCount()));
         }
         return null;
     }
@@ -79,7 +79,7 @@ public class ContentGenerator {
     {
         if(item instanceof Armour)
         {
-            ((Armour) item).setArmour(new Armour(getInteger(seed, 1, 10), item.getName(), getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount())));
+            ((Armour) item).setArmour(new Armour(getInteger(seed, 1, 10), item.getName(), getInteger(seed, 6, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 1, Engine.getInstance().getWorld().getRoomCount())));
         }
         if(item instanceof Consumable)
         {
@@ -87,7 +87,7 @@ public class ContentGenerator {
         }
         if(item instanceof Weapon)
         {
-            ((Weapon) item).setWeapon(new Weapon(getInteger(seed, 1, 10), item.getName(), getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount())));
+            ((Weapon) item).setWeapon(new Weapon(getInteger(seed, 1, 10), item.getName(), getInteger(seed, 4, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 5, Engine.getInstance().getWorld().getRoomCount())));
         }
     }
 
@@ -107,11 +107,11 @@ public class ContentGenerator {
     static public Player generatePlayer(String seed)
     {
         Log.e(TAG, seed+"generatePlayer");
-        int health = 1+ getInteger(seed,1, 10);
-        int mana = 1+ getInteger(seed,2, 10);
+        int health = 1+ getInteger(seed,1, 20);
+        int mana = 1+ getInteger(seed,2, 20);
         int money = 1+getInteger(seed,3, 20);
-        int dex = 1+ getInteger(seed,4, 10);
-        int str = 1+ getInteger(seed,5, 10);
+        int dex = 1+ getInteger(seed,4, 5);
+        int str = 1+ getInteger(seed,5, 5);
 
         return new Player(health, mana, money, dex, str);
     }
@@ -164,6 +164,6 @@ public class ContentGenerator {
 
     static public void regenerateItem(String seed, Spell spell)
     {
-        spell.setSpell(new Spell(getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount()), "Spell", seed));
+        spell.setSpell(new Spell(getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount()), spell.getName(), seed));
     }
 }

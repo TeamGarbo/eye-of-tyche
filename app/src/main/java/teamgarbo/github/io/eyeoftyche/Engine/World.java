@@ -59,6 +59,6 @@ public class World {
     }
 
     public int getRoomCount() {
-        return roomCount;
+        return roomCount * roomCount;
     }
 }

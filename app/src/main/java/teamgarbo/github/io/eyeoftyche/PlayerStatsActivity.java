@@ -29,6 +29,7 @@ public class PlayerStatsActivity extends AppCompatActivity {
                 "Your Money: " + player.getMoney() + "\n"+
                 "Your Strenght: " + player.getStr()+ "\n"+
                 "Your Dexterity: " + player.getDex() + "\n"+
+                "Your Max Hit: " +  player.getStr() * player.getCurrentSpell().getHealth() + "\n"+
                 "Your XP: " + player.getTotalXp() + "\n" +
                 "\n"+
                 "Current Attack: " + player.getCurrentSpell().getName();

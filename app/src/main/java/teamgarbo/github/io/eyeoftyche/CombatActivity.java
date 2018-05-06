@@ -76,7 +76,7 @@ public class CombatActivity extends AppCompatActivity {
         Player player = Engine.getInstance().getPlayer();
 
         if(player.getMana() >= player.getCurrentSpell().getMana()) {
-            mob.setHealth(mob.getHealth() - player.getCurrentSpell().getHealth() * player.getDex() / mob.getDex());
+            mob.setHealth(mob.getHealth() - player.getCurrentSpell().getHealth() * player.getStr() / mob.getDex() );
             player.setMana(player.getMana() - player.getCurrentSpell().getMana());
         }
         else
@@ -110,7 +110,7 @@ public class CombatActivity extends AppCompatActivity {
             finish();
         }
         else{
-            player.setHealth(player.getHealth() - mob.getDex() * mob.getDex() / player.getDex() );
+            player.setHealth(player.getHealth() - mob.getStr() * mob.getDex() / player.getDex()  );
             if(player.getHealth() <= 0)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CombatActivity.this, R.style.AlertDialogTheme);
