@@ -18,6 +18,7 @@ public class Engine {
     World world;
 
     String seed = Globals.DEFULT_SEED;
+    String playerSeed = Globals.DEFULT_SEED;
 
     private static Engine instance;
 
@@ -30,7 +31,18 @@ public class Engine {
 
     public Engine(){
         pastCodes = new ArrayList<String>();
+    }
+
+    public void initWorld(){
         world = new World(seed);
+    }
+
+    public void setSeed(String seed){
+        this.seed = seed;
+    }
+
+    public void initPlayerStats(String seed){
+        this.playerSeed = seed;
     }
 
     public ArrayList<String> getPastCodes(){

@@ -11,14 +11,15 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="86dp"
+        android:layout_marginBottom="87dp"
         android:background="@color/black"
         android:onClick="setPlayer"
         android:text="Set"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_cp2" />
 
     <EditText
         android:id="@+id/editText"
@@ -31,4 +32,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/scan_cp1"
+        android:layout_width="61dp"
+        android:layout_height="59dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:clickable="true"
+        android:onClick="setWorldSeed"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/eye" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/scan_cp2"
+        android:layout_width="61dp"
+        android:layout_height="59dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="18dp"
+        android:clickable="true"
+        android:onClick="setStatsSeed"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/eye" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="191dp"
+        android:text="Scan a world:"
+        app:layout_constraintBottom_toTopOf="@+id/scan_cp1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:text="Scan your stats:"
+        app:layout_constraintBottom_toTopOf="@+id/scan_cp2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_cp1" />
 </android.support.constraint.ConstraintLayout>
