@@ -43,6 +43,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 inventoryAdapter.mSelectedItem = position;
+                inventoryAdapter.setObjects(Engine.getInstance().getPlayer().getInventory());
                 inventoryAdapter.notifyDataSetChanged();
         }
         });
@@ -70,6 +71,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 Engine.getInstance().getPlayer().removeItem(item);
+                inventoryAdapter.setObjects(Engine.getInstance().getPlayer().getInventory());
                 inventoryAdapter.notifyDataSetChanged();
             }
         });

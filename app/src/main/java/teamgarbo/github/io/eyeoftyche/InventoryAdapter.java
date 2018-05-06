@@ -82,4 +82,8 @@ public class InventoryAdapter extends ArrayAdapter<Item> {
         // 5. return rowView
         return rowView;
     }
+
+    public void setObjects(ArrayList<Item> objects) {
+        this.objects = objects;
+    }
 }
