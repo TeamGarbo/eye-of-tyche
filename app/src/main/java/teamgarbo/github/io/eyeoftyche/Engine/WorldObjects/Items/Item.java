@@ -21,4 +21,10 @@ public class Item {
     public String getName() {
         return name;
     }
+
+
+    public void setItem(int cost, String name) {
+        this.cost = cost;
+        this.name = name;
+    }
 }

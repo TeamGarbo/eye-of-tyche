@@ -21,4 +21,18 @@ public class Weapon extends Equipable {
     public int getStr() {
         return str;
     }
+
+    public void setWeapon(int cost, String name, int dex, int str)
+    {
+        setEquipable(cost, name);
+        this.dex = dex;
+        this.str = str;
+    }
+
+    public void setWeapon(Weapon weapon)
+    {
+        setEquipable(weapon.getCost(), weapon.getName());
+        this.dex = weapon.getDex();
+        this.str = weapon.getStr();
+    }
 }

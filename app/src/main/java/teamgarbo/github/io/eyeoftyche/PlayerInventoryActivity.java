@@ -1,7 +1,8 @@
 package teamgarbo.github.io.eyeoftyche;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,8 @@ public class PlayerInventoryActivity extends AppCompatActivity {
 
     InventoryAdapter inventoryAdapter;
 
+    BarcodeHandler barcodeHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class PlayerInventoryActivity extends AppCompatActivity {
                 inventoryAdapter.notifyDataSetChanged();
         }
         });
+
+        barcodeHandler = new BarcodeHandler(this, 1);
     }
 
     public void itemInfo(View v)
@@ -50,7 +55,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         final Item item = inventoryAdapter.getItem(inventoryAdapter.mSelectedItem);
 
         // new item dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
         builder.setTitle("Item info:");
 
         final View view = getLayoutInflater().inflate(R.layout.layout_item_info, null);
@@ -64,26 +69,11 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         builder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-
-            }
-        });
-
-        final AlertDialog dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Engine.getInstance().getPlayer().removeItem(item);
+                inventoryAdapter.notifyDataSetChanged();
             }
         });
+        builder.show();
 
         TextView textView = view.findViewById(R.id.text_name);
         textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getName());
@@ -124,38 +114,40 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         }
     }
 
-    public void reforge(Item item)
+    public void reforge(Item item, String barcode)
     {
-        ContentGenerator.regenerateItem(Engine.getInstance().getSeed(), item);
+        ContentGenerator.regenerateItem(barcode, item);
         itemInfo(null);
     }
 
     public void reforgeButton(View view)
     {
-        // new yesno dialog
-        final AlertDialog.Builder yesnoBuilder = new AlertDialog.Builder(this);
-        yesnoBuilder.show();
-        // yes no on cancel dialog
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
+        builder.setMessage("Are you sure you want to re-roll stats?")
+                .setTitle("Eye of Tyche");
+        builder.setPositiveButton("Re-roll", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog1, int which) {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        reforge(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem));
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        break;
-                }
+            public void onClick(DialogInterface dialog, int id) {
+                barcodeHandler.showScanner();
             }
-        };
-        yesnoBuilder.setMessage("Are you sure you want to reroll stats?")
-                .setPositiveButton("Yes", dialogClickListener)
-                .setNegativeButton("No", dialogClickListener);
-
-
-
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        builder.show();
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String barcode = barcodeHandler.getBarcode(requestCode,resultCode,data,1);
+        if(barcode != null)
+        {
+            reforge(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem), barcode);
+        }
+    }
 }

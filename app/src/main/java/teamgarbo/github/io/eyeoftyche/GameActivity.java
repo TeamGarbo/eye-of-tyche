@@ -1,9 +1,10 @@
 package teamgarbo.github.io.eyeoftyche;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -64,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
         final ItemAdapter adapter = engine.getChest(this);
         if(adapter == null)
         {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialogTheme);
             builder.setTitle("No items found.");
 
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -79,7 +80,7 @@ public class GameActivity extends AppCompatActivity {
             return;
         }
 
-        final AlertDialog builder = new AlertDialog.Builder(this).create();
+        final AlertDialog builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme).create();
         builder.setTitle("Items from chest:");
 
         View v = LayoutInflater.from(this).inflate(R.layout.item_list_holder, null, false);
@@ -116,7 +117,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void progressRoom(View view)
     {
-        final AlertDialog builder = new AlertDialog.Builder(this).create();
+        final AlertDialog builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme).create();
         builder.setTitle("Which room?");
 
         final RoomAdapter adapter = engine.getRoomList(this);
