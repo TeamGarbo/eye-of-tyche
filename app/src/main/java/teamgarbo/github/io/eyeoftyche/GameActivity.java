@@ -213,5 +213,17 @@ public class GameActivity extends AppCompatActivity {
             Intent myIntent = new Intent(GameActivity.this, CombatActivity.class);
             startActivity(myIntent);
         }
+        else
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+            builder.setMessage("No enemy to attack!")
+                    .setTitle("Combat");
+            builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            builder.show();
+        }
     }
 }

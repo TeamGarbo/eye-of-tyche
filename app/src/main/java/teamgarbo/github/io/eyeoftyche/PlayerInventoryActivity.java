@@ -56,7 +56,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
     public void itemInfo(View v)
     {
         final Item item = inventoryAdapter.getItem(inventoryAdapter.mSelectedItem);
-
+        if(item != null) {
         // new item dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
         builder.setTitle("Item info:");
@@ -79,7 +79,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         });
         builder.show();
 
-        if(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem) != null) {
+
             TextView textView = view.findViewById(R.id.text_name);
             textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getName());
             textView = view.findViewById(R.id.text_cost);
@@ -214,21 +214,23 @@ public class PlayerInventoryActivity extends AppCompatActivity {
 
     public void useItem(View view)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
-        builder.setMessage("Are you sure you want to use this item stats?")
-                .setTitle("Use Item");
-        builder.setPositiveButton("Use", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-            useItem(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem));
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
-            }
-        });
-        builder.show();
+        if(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem) != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
+            builder.setMessage("Are you sure you want to use this item stats?")
+                    .setTitle("Use Item");
+            builder.setPositiveButton("Use", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    useItem(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem));
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            builder.show();
+        }
     }
 }
