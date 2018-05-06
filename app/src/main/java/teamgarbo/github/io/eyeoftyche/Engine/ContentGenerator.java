@@ -32,7 +32,7 @@ public class ContentGenerator {
     static private boolean getBoolean(String seed, int offset)
     {
         Log.e(TAG, seed+"getBoolean");
-        return seed.charAt(offset) >= 128;
+        return seed.charAt(offset)%2 == 0;
     }
 
     static public Room generateRoom(String seed)

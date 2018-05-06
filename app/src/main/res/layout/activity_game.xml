@@ -73,6 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:background="@android:color/holo_orange_light"
+        android:onClick="attack"
+        android:text="Attack"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/buttonPlayerMenu"
         app:layout_constraintEnd_toEndOf="parent"

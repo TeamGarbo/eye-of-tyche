@@ -178,4 +178,9 @@ public class GameActivity extends AppCompatActivity {
         console.setText(text);
     }
 
+    public void attack(View view){
+        Intent myIntent = new Intent(GameActivity.this, CombatActivity.class);
+        startActivity(myIntent);
+    }
+
 }
