@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
+    tools:context="teamgarbo.github.io.eyeoftyche.CombatActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/mobText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="47dp"
+        android:text="Mob"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAttack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAttack"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:onClick="attackMob"
+        android:text="Attack"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSpell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mobText" />
+
+    <Button
+        android:id="@+id/buttonSpell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:onClick="openSpellBook"
+        android:text="Spell Book"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRun"
+        app:layout_constraintStart_toStartOf="@+id/buttonAttack"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAttack" />
+
+    <Button
+        android:id="@+id/buttonRun"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:onClick="runAway"
+        android:text="Run"
+        app:layout_constraintBottom_toTopOf="@+id/scan_combat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSpell" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/scan_combat"
+        android:layout_width="76dp"
+        android:layout_height="84dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="112dp"
+        android:clickable="true"
+        android:onClick="scanSpell"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRun"
+        app:srcCompat="@drawable/eye" />
+</android.support.constraint.ConstraintLayout>

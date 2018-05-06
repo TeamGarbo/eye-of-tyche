@@ -35,6 +35,12 @@ public class GameActivity extends AppCompatActivity {
         barcodeHandler = new BarcodeHandler(this, 1);
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        updateConsoleText();
+    }
+
     public void scan(View view){
         barcodeHandler.showScanner();
         parseBarcode(barcodeHandler.getLastBarcode());
@@ -179,4 +185,24 @@ public class GameActivity extends AppCompatActivity {
         console.setText(text);
     }
 
+    public void updateConsoleText(){
+        GameActivity.this.runOnUiThread(new Runnable() {
+            public void run() {
+                setConsoleText("");
+                appendText("Progressed room! \n");
+                appendText("Desciption: " + engine.getCurrentRoom().getDescription() + "\n");
+                appendText("Mobs: " + engine.getCurrentRoom().getMobs() + "\n");
+                appendText("NPCs: " + engine.getCurrentRoom().getNpcs() + "\n");
+                appendText("Outside: " + engine.getCurrentRoom().isOutside() + "\n");
+
+            }
+        });
+    }
+
+    public void attack(View view){
+        if(engine.getCurrentRoom().getMobList().size() > 0){
+            Intent myIntent = new Intent(GameActivity.this, CombatActivity.class);
+            startActivity(myIntent);
+        }
+    }
 }

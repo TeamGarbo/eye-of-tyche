@@ -33,6 +33,7 @@ public class World {
     {
         currentRoom = room;
         seed = room.getSeed();
+        currentRoom.setMobList(getMobs());
     }
 
     ArrayList<Item> getChest()

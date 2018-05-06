@@ -41,4 +41,29 @@ public class Mob {
         return xpDrop;
     }
 
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setDex(int dex) {
+        this.dex = dex;
+    }
+
+    public void setStr(int str) {
+        this.str = str;
+    }
+
+    public void setXpDrop(int xpDrop) {
+        this.xpDrop = xpDrop;
+    }
+
 }

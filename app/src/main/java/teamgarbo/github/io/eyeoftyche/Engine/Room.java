@@ -2,6 +2,8 @@ package teamgarbo.github.io.eyeoftyche.Engine;
 
 import java.util.ArrayList;
 
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Mob;
+
 /**
  * Created by hercu on 05-May-18.
  */
@@ -15,6 +17,7 @@ public class Room {
     int rooms;
     boolean outside;
 
+    ArrayList<Mob> mobList;
 
     String seed;
 
@@ -28,6 +31,17 @@ public class Room {
         this.seed = seed;
     }
 
+    public void setMobs(int mobs){
+        this.mobs = mobs;
+    }
+
+    public void setMobList(ArrayList<Mob> mobList){
+        this.mobList = mobList;
+    }
+
+    public ArrayList<Mob> getMobList(){
+        return mobList;
+    }
     public String getDescription() {
         return description;
     }

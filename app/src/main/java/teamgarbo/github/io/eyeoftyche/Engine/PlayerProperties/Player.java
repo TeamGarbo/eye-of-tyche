@@ -10,7 +10,13 @@ import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
 
 public class Player {
 
-    int health, mana, money, dex, str, totalXp;
+    int health;
+    int mana;
+    int money;
+    int dex;
+
+    int str;
+    int totalXp;
 
     public Player(int health, int mana, int money, int dex, int str) {
         this.health = health;
@@ -40,4 +46,67 @@ public class Player {
         inventory.removeItem(item);
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getDex() {
+        return dex;
+    }
+
+    public int getStr() {
+        return str;
+    }
+
+    public int getTotalXp() {
+        return totalXp;
+    }
+
+    public void addXP(int xp){
+        this.totalXp+=xp;
+    }
+
+    public SpellBook getSpellBook() {
+        return spellBook;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setDex(int dex) {
+        this.dex = dex;
+    }
+
+    public void setStr(int str) {
+        this.str = str;
+    }
+
+    public void setTotalXp(int totalXp) {
+        this.totalXp = totalXp;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public void setSpellBook(SpellBook spellBook) {
+        this.spellBook = spellBook;
+    }
 }

@@ -1,7 +1,9 @@
 package teamgarbo.github.io.eyeoftyche;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +52,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
 
             System.err.println("BARCODE ---- " + statcode);
 
+            vibrate(100);
             Intent myIntent = new Intent(CreatePlayerActivity.this, GameActivity.class);
             startActivity(myIntent);
         }
@@ -77,6 +80,13 @@ public class CreatePlayerActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         barcodeHandlerWorld.getBarcode(requestCode, resultCode, data, 1);
         barcodeHandlerStats.getBarcode(requestCode, resultCode, data, 2);
+        vibrate(100);
+    }
+
+    public void vibrate(int millis){
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        v.vibrate(millis);
     }
 
 }

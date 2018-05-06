@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Mob;
 import teamgarbo.github.io.eyeoftyche.ItemAdapter;
 import teamgarbo.github.io.eyeoftyche.RoomAdapter;
 
@@ -90,5 +91,13 @@ public class Engine {
     public String getSeed()
     {
         return seed;
+    }
+
+    public Mob getTopMob(){
+        Mob mob = world.currentRoom.getMobList().get(0);
+        if(world.currentRoom.mobList.size()>0)
+            world.currentRoom.setMobs(world.currentRoom.getMobs() - 1);
+            world.currentRoom.getMobList().remove(mob);
+        return mob;
     }
 }
