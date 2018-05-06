@@ -43,13 +43,14 @@ public class CombatActivity extends AppCompatActivity {
         String output = "Mob Health: " + mob.getHealth() + "\n" +
                         "Mob Mana: " + mob.getMana() + "\n" +
                         "Mob Strenght: " + mob.getStr()+ "\n"+
-                        "Mob Dexterity"
+                        "Mob Dexterity" + mob.getDex() + "\n"+
                         "Mob Money: " + mob.getMoney() + "\n" +
-
                         "\n"+
                         "Your Health: " + engine.getPlayer().getHealth() + "\n" +
                         "Your Mana: " + engine.getPlayer().getMana() + "\n" +
                         "Your Money: " + engine.getPlayer().getMoney() + "\n"+
+                        "Mob Strenght: " + engine.getPlayer().getStr()+ "\n"+
+                        "Mob Dexterity" + engine.getPlayer().getDex() + "\n"+
                         "Your XP: " + engine.getPlayer().getTotalXp() + "\n" +
                         "\n"+
                         "Current Attack: " + engine.getPlayer().getCurrentSpell().getName();
