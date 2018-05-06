@@ -47,7 +47,9 @@ public class CombatActivity extends AppCompatActivity {
                         "Your Health: " + engine.getPlayer().getHealth() + "\n" +
                         "Your Mana: " + engine.getPlayer().getMana() + "\n" +
                         "Your Money: " + engine.getPlayer().getMoney() + "\n"+
-                        "Your XP: " + engine.getPlayer().getTotalXp() + "\n";
+                        "Your XP: " + engine.getPlayer().getTotalXp() + "\n" +
+                        "\n"+
+                        "Current Attack: " + engine.getPlayer().getCurrentSpell().getName();
 
         TextView mobText = (TextView) findViewById(R.id.mobText);
         mobText.setText(output);
@@ -143,6 +145,7 @@ public class CombatActivity extends AppCompatActivity {
     public void addSpell(String barcode)
     {
         Engine.getInstance().getPlayer().addSpell(ContentGenerator.generateSpell(barcode));
+        updateMobText();
     }
 
     @Override
