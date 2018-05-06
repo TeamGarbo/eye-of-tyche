@@ -133,7 +133,13 @@ public class GameActivity extends AppCompatActivity {
                     engine.progressRoom(room);
                     GameActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            appendText("Progressed room");
+                            setConsoleText("");
+                            appendText("Progressed room! \n");
+                            appendText("Desciption: " + engine.getCurrentRoom().getDescription() + "\n");
+                            appendText("Mobs: " + engine.getCurrentRoom().getMobs() + "\n");
+                            appendText("NPCs: " + engine.getCurrentRoom().getNpcs() + "\n");
+                            appendText("Outside: " + engine.getCurrentRoom().isOutside() + "\n");
+
                         }
                     });
 
@@ -166,4 +172,10 @@ public class GameActivity extends AppCompatActivity {
         TextView console = (TextView) findViewById(R.id.text_console);
         console.setText(console.getText().toString() + '\n' + message);
     }
+
+    public void setConsoleText(String text){
+        TextView console = (TextView) findViewById(R.id.text_console);
+        console.setText(text);
+    }
+
 }
