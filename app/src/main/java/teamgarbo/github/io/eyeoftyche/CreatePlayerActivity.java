@@ -36,8 +36,9 @@ public class CreatePlayerActivity extends AppCompatActivity {
     }
 
     public void setPlayer(View view){
-        if(worldScanned && statsScanned){
-            Globals.PLAYER_NAME = ((TextView) findViewById(R.id.editText)).getText().toString();
+        String name = ((TextView) findViewById(R.id.editText)).getText().toString();
+        if(worldScanned && statsScanned && !name.trim().equals("")){
+            Globals.PLAYER_NAME = name;
             Globals.STARTED = true;
 
             String barcode = barcodeHandlerWorld.getLastBarcode();
