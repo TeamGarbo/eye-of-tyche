@@ -85,7 +85,6 @@ public class CombatActivity extends AppCompatActivity {
             builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
-                    barcodeHandler.showScanner();
                 }
             });
             builder.show();
@@ -101,7 +100,6 @@ public class CombatActivity extends AppCompatActivity {
             builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
-                    barcodeHandler.showScanner();
                 }
             });
             builder.show();
@@ -118,7 +116,6 @@ public class CombatActivity extends AppCompatActivity {
                 builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        barcodeHandler.showScanner();
                     }
                 });
                 builder.show();
