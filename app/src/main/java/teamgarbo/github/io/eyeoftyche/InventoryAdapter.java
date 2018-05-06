@@ -41,7 +41,7 @@ public class InventoryAdapter extends ArrayAdapter<Item> {
     @Override
     public Item getItem(int i)
     {
-        if (getCount() > 0)
+        if (getCount() > 0 && i < objects.size())
             return objects.get(i);
         return null;
     }

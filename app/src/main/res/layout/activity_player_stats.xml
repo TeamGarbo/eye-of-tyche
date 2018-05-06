@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/text_stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Stats"
@@ -23,11 +23,7 @@
             android:textAllCaps="true"
             android:textSize="30sp"
             android:textStyle="bold" />
-        <GridView
-            android:id="@+id/inventoryHolder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="50dp" />
+
     </LinearLayout>
 
 
