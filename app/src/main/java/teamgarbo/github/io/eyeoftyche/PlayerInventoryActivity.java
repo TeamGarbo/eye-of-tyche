@@ -3,6 +3,7 @@ package teamgarbo.github.io.eyeoftyche;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         inventoryAdapter = new InventoryAdapter(this,Engine.getInstance().getPlayer().getInventory());
         final ListView listView  = (ListView) findViewById(R.id.inventoryHolder);
         listView.setAdapter(inventoryAdapter);

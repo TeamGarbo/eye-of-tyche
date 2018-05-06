@@ -2,6 +2,7 @@ package teamgarbo.github.io.eyeoftyche;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
@@ -28,7 +29,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_player);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         barcodeHandlerWorld = new BarcodeHandler(this, 1);
         barcodeHandlerStats = new BarcodeHandler(this, 2);
         engine = Engine.getInstance();
