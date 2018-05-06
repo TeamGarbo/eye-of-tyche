@@ -41,7 +41,7 @@ public class ContentGenerator {
         boolean outside = getBoolean(seed, 1);
         int chests = getInteger(seed,1, 3);
         int mobs = getInteger(seed,2, 2);
-        int npcs = getInteger(seed,3, 0);
+        int npcs = getInteger(seed,3, 1);
         int rooms = getInteger(seed,4, 3);
 
         return new Room("Room:"+seed, chests, mobs, npcs, rooms+1, outside, seed);
@@ -81,12 +81,12 @@ public class ContentGenerator {
     static public Mob generateMob(String seed)
     {
         Log.e(TAG, seed+"generateMob");
-        int health = getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount());
-        int mana = getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount());
-        int money = getInteger(seed,3, Engine.getInstance().getWorld().getRoomCount() * 2);
-        int dex = getInteger(seed,4, Engine.getInstance().getWorld().getRoomCount());
-        int str = getInteger(seed,5, Engine.getInstance().getWorld().getRoomCount());
-        int xpDrop = getInteger(seed,6, Engine.getInstance().getWorld().getRoomCount());
+        int health = 1+ getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount());
+        int mana = 1+ getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount());
+        int money = 1+ getInteger(seed,3, Engine.getInstance().getWorld().getRoomCount() * 2);
+        int dex = 1+ getInteger(seed,4, Engine.getInstance().getWorld().getRoomCount());
+        int str = 1+ getInteger(seed,5, Engine.getInstance().getWorld().getRoomCount());
+        int xpDrop = 1+ getInteger(seed,6, Engine.getInstance().getWorld().getRoomCount());
 
         return new Mob(health, mana, money, dex, str, xpDrop);
     }
@@ -94,11 +94,11 @@ public class ContentGenerator {
     static public Player generatePlayer(String seed)
     {
         Log.e(TAG, seed+"generatePlayer");
-        int health = getInteger(seed,1, 10);
-        int mana = getInteger(seed,2, 10);
-        int money = getInteger(seed,3, 20);
-        int dex = getInteger(seed,4, 10);
-        int str = getInteger(seed,5, 10);
+        int health = 1+ getInteger(seed,1, 10);
+        int mana = 1+ getInteger(seed,2, 10);
+        int money = 1+getInteger(seed,3, 20);
+        int dex = 1+ getInteger(seed,4, 10);
+        int str = 1+ getInteger(seed,5, 10);
 
         return new Player(health, mana, money, dex, str);
     }
