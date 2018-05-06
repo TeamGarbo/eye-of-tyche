@@ -44,11 +44,17 @@ public class Engine {
     }
 
     public void setSeed(String seed){
+        seed = seed.substring(0, 8);
         this.seed = seed;
     }
 
     public void initPlayerStats(String seed){
+       seed = seed.substring(0, 8);
         this.playerSeed = seed;
+    }
+
+    public void initPlayer(){
+        player = ContentGenerator.generatePlayer(playerSeed);
     }
 
     public ArrayList<String> getPastCodes(){

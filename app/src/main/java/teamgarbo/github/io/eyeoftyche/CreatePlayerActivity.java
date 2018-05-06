@@ -26,7 +26,8 @@ public class CreatePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_player);
 
-        barcodeHandlerWorld = new BarcodeHandler(this);
+        barcodeHandlerWorld = new BarcodeHandler(this, 1);
+        barcodeHandlerStats = new BarcodeHandler(this, 2);
         engine = Engine.getInstance();
     }
 
@@ -35,6 +36,19 @@ public class CreatePlayerActivity extends AppCompatActivity {
             Globals.PLAYER_NAME = ((TextView) findViewById(R.id.editText)).getText().toString();
             Globals.STARTED = true;
 
+            String barcode = barcodeHandlerWorld.getLastBarcode();
+            engine.setSeed(barcode);
+            engine.initWorld();
+
+            System.err.println("BARCODE ---- " + barcode);
+
+            String statcode = barcodeHandlerStats.getLastBarcode();
+            engine.initPlayerStats(statcode);
+            engine.initPlayer();
+
+
+            System.err.println("BARCODE ---- " + statcode);
+
             Intent myIntent = new Intent(CreatePlayerActivity.this, GameActivity.class);
             startActivity(myIntent);
         }
@@ -42,11 +56,6 @@ public class CreatePlayerActivity extends AppCompatActivity {
 
     public void setWorldSeed(View view){
         barcodeHandlerWorld.showScanner();
-
-        String barcode = barcodeHandlerWorld.getLastBarcode();
-        engine.setSeed(barcode);
-        engine.initWorld();
-        System.out.println(barcode + " BARCODE E E AE A");
         FloatingActionButton button = ((FloatingActionButton) findViewById(R.id.scan_cp1));
         button.setBackgroundColor(getResources().getColor(R.color.green));
         button.setEnabled(false);
@@ -54,9 +63,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
     }
 
     public void setStatsSeed(View view){
-        barcodeHandler.showScanner();
-        String barcode = barcodeHandler.getLastBarcode();
-        engine.initPlayerStats(barcode);
+        barcodeHandlerStats.showScanner();
         FloatingActionButton button = ((FloatingActionButton) findViewById(R.id.scan_cp2));
         button.setBackgroundColor(getResources().getColor(R.color.green));
         button.setEnabled(false);
@@ -67,7 +74,8 @@ public class CreatePlayerActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        barcodeHandlerWorld.getBarcode(requestCode, resultCode, data);
+        barcodeHandlerWorld.getBarcode(requestCode, resultCode, data, 1);
+        barcodeHandlerStats.getBarcode(requestCode, resultCode, data, 2);
     }
 
 }

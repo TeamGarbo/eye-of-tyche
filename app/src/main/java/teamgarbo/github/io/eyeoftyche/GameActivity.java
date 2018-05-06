@@ -31,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
 
         engine = Engine.getInstance();
 
-        barcodeHandler = new BarcodeHandler(this);
+        barcodeHandler = new BarcodeHandler(this, 1);
     }
 
     public void scan(View view){
@@ -158,7 +158,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        barcodeHandler.getBarcode(requestCode, resultCode, data);
+        barcodeHandler.getBarcode(requestCode, resultCode, data, 1);
     }
 
     public void appendText(String message)

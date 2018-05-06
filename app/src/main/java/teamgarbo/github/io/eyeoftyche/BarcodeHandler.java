@@ -40,6 +40,7 @@ public class BarcodeHandler {
         if (requestCode == RC_BARCODE_CAPTURE + offset && resultCode == CommonStatusCodes.SUCCESS) {
             if (data != null) {
                 Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
+                lastBarcode = barcode.displayValue;
                 return barcode.displayValue;
             }
         }
