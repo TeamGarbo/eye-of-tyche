@@ -35,4 +35,9 @@ public class Player {
        return inventory.getItemsList();
     }
 
+    public void removeItem(Item item)
+    {
+        inventory.removeItem(item);
+    }
+
 }

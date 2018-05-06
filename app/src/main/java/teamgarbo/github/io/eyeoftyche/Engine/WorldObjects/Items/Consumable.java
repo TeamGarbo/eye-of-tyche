@@ -14,4 +14,11 @@ public class Consumable extends Item{
         this.mana = mana;
     }
 
+    public int getMana() {
+        return mana;
+    }
+
+    public int getHealth() {
+        return health;
+    }
 }

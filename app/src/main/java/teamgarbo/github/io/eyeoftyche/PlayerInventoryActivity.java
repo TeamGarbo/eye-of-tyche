@@ -9,11 +9,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import teamgarbo.github.io.eyeoftyche.Engine.ContentGenerator;
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
 import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Inventory;
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Armour;
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Consumable;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Weapon;
 
 public class PlayerInventoryActivity extends AppCompatActivity {
 
@@ -39,16 +45,96 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         });
     }
 
+    public void itemInfo(View v)
+    {
+        final Item item = inventoryAdapter.getItem(inventoryAdapter.mSelectedItem);
+
+        // new item dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Item info:");
+
+        final View view = getLayoutInflater().inflate(R.layout.layout_item_info, null);
+        builder.setView(view);
+
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+
+            }
+        });
+
+        final AlertDialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Engine.getInstance().getPlayer().removeItem(item);
+            }
+        });
+
+        TextView textView = view.findViewById(R.id.text_name);
+        textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getName());
+        textView = view.findViewById(R.id.text_cost);
+        textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getCost() + "");
+        if(item instanceof Weapon) {
+            textView = view.findViewById(R.id.text_first_name);
+            textView.setText("Dexterity");
+            textView = view.findViewById(R.id.text_second_name);
+            textView.setText("Strnegth");
+            Weapon weapon = (Weapon)item;
+            textView = view.findViewById(R.id.text_first);
+            textView.setText(weapon.getDex()+"");
+            textView = view.findViewById(R.id.text_second);
+            textView.setText(weapon.getStr()+"");
+        }
+        if(item instanceof Armour) {
+            textView = view.findViewById(R.id.text_first_name);
+            textView.setText("Health");
+            textView = view.findViewById(R.id.text_second_name);
+            textView.setText("Mana");
+            Armour armour = (Armour)item;
+            textView = view.findViewById(R.id.text_first);
+            textView.setText(armour.getHealth()+"");
+            textView = view.findViewById(R.id.text_second);
+            textView.setText(armour.getMana()+"");
+        }
+        if(item instanceof Consumable) {
+            textView = view.findViewById(R.id.text_first_name);
+            textView.setText("Health");
+            textView = view.findViewById(R.id.text_second_name);
+            textView.setText("Mana");
+            Consumable consumable = (Consumable)item;
+            textView = view.findViewById(R.id.text_first);
+            textView.setText(consumable.getHealth()+"");
+            textView = view.findViewById(R.id.text_second);
+            textView.setText(consumable.getMana()+"");
+        }
+    }
+
     public void reforge(Item item)
     {
         ContentGenerator.regenerateItem(Engine.getInstance().getSeed(), item);
+        itemInfo(null);
     }
 
     public void reforgeButton(View view)
     {
         // new yesno dialog
         final AlertDialog.Builder yesnoBuilder = new AlertDialog.Builder(this);
-
+        yesnoBuilder.show();
         // yes no on cancel dialog
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -63,10 +149,11 @@ public class PlayerInventoryActivity extends AppCompatActivity {
                 }
             }
         };
-        yesnoBuilder.setMessage("Do you want to discard current details?").setPositiveButton("Yes", dialogClickListener)
+        yesnoBuilder.setMessage("Are you sure you want to reroll stats?")
+                .setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener);
 
-        yesnoBuilder.show();
+
 
 
     }
