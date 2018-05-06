@@ -40,4 +40,31 @@ public class Player {
         inventory.removeItem(item);
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getDex() {
+        return dex;
+    }
+
+    public int getStr() {
+        return str;
+    }
+
+    public int getTotalXp() {
+        return totalXp;
+    }
+
+    public SpellBook getSpellBook() {
+        return spellBook;
+    }
 }

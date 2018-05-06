@@ -179,8 +179,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void attack(View view){
-        Intent myIntent = new Intent(GameActivity.this, CombatActivity.class);
-        startActivity(myIntent);
+        if(engine.getCurrentRoom().getMobs() > 0){
+            Intent myIntent = new Intent(GameActivity.this, CombatActivity.class);
+            startActivity(myIntent);
+        }
     }
-
 }
