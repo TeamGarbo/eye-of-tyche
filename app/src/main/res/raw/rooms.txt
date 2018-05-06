@@ -1,0 +1,29 @@
+Cave
+Field
+Kitchen
+Corridor
+Hall
+Forest
+Woods
+Pathway
+Castle
+Village
+Cottage
+Beach
+Seaside
+Lakeside
+Town
+City
+Mine
+Mountain
+Desert
+Tundra
+Swamp
+Corrupted Lands
+Infested Lands
+Diseased Lands
+Plagued Lands
+Grasslands
+Flatlands
+Hills
+Farm
