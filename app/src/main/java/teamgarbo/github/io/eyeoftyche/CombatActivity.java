@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import teamgarbo.github.io.eyeoftyche.Engine.ContentGenerator;
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
+import teamgarbo.github.io.eyeoftyche.Engine.Globals;
 import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Mob;
 
@@ -40,17 +41,19 @@ public class CombatActivity extends AppCompatActivity {
     }
 
     public void updateMobText(){
-        String output = "Mob Health: " + mob.getHealth() + "\n" +
+        String output = Globals.PLAYER_NAME + " vs. " + "MOB" + "\n"+
+                        "\n"+
+                        "Mob Health: " + mob.getHealth() + "\n" +
                         "Mob Mana: " + mob.getMana() + "\n" +
                         "Mob Strenght: " + mob.getStr()+ "\n"+
-                        "Mob Dexterity" + mob.getDex() + "\n"+
+                        "Mob Dexterity: " + mob.getDex() + "\n"+
                         "Mob Money: " + mob.getMoney() + "\n" +
                         "\n"+
                         "Your Health: " + engine.getPlayer().getHealth() + "\n" +
                         "Your Mana: " + engine.getPlayer().getMana() + "\n" +
                         "Your Money: " + engine.getPlayer().getMoney() + "\n"+
-                        "Mob Strenght: " + engine.getPlayer().getStr()+ "\n"+
-                        "Mob Dexterity" + engine.getPlayer().getDex() + "\n"+
+                        "Your Strenght: " + engine.getPlayer().getStr()+ "\n"+
+                        "Your Dexterity: " + engine.getPlayer().getDex() + "\n"+
                         "Your XP: " + engine.getPlayer().getTotalXp() + "\n" +
                         "\n"+
                         "Current Attack: " + engine.getPlayer().getCurrentSpell().getName();
