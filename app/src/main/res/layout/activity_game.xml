@@ -7,91 +7,117 @@
     android:background="@color/black"
     tools:context="teamgarbo.github.io.eyeoftyche.GameActivity">
 
-    <Button
-        android:id="@+id/buttonScan"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/eye"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@color/colorAccent"
-        android:textColorLink="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPlayerMenu" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="50dp">
 
-    <TextView
-        android:id="@+id/text_console"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="17dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@android:color/holo_orange_light"
-        app:layout_constraintBottom_toTopOf="@+id/buttonInventory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
+        <TextView
+            android:id="@+id/text_console"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="17dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_orange_light"
+            app:layout_constraintBottom_toTopOf="@+id/buttonInventory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
-    <Button
-        android:id="@+id/buttonInventory"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:background="@android:color/holo_orange_light"
-        android:onClick="progressRoom"
-        android:text="Exit Area"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_console" />
+        <TextView
+            android:id="@+id/text_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="17dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_orange_light"
+            app:layout_constraintBottom_toTopOf="@+id/buttonInventory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
-    <Button
-        android:id="@+id/buttonLook"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/holo_orange_light"
-        android:onClick="lookForItems"
-        android:text="Look For Items"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/buttonInteract"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonInventory" />
+        <Button
+            android:id="@+id/buttonInventory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:background="@android:color/holo_orange_light"
+            android:onClick="progressRoom"
+            android:text="Exit Area"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_console" />
 
-    <Button
-        android:id="@+id/buttonInteract"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:background="@android:color/holo_orange_light"
-        android:onClick="attack"
-        android:text="Attack Mobs"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/buttonPlayerMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLook" />
+        <Button
+            android:id="@+id/buttonLook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/holo_orange_light"
+            android:onClick="lookForItems"
+            android:text="Look For Items"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/buttonInteract"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonInventory" />
 
-    <Button
-        android:id="@+id/buttonPlayerMenu"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/white"
-        android:onClick="openPlayerMennu"
-        android:text="Player Menu"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/buttonScan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonInteract" />
+        <Button
+            android:id="@+id/buttonInteract"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:background="@android:color/holo_orange_light"
+            android:onClick="attack"
+            android:text="Attack Mobs"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPlayerMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLook" />
+
+        <Button
+            android:id="@+id/buttonPlayerMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:onClick="openPlayerMennu"
+            android:text="Player Menu"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/buttonScan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonInteract" />
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/buttonScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/eye"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/colorAccent"
+            android:textColorLink="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPlayerMenu" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

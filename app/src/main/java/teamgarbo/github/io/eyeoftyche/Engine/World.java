@@ -12,7 +12,7 @@ import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Mob;
 public class World {
 
     Room currentRoom;
-    int roomCount = 5;
+    int roomCount = 10;
     String seed;
 
     World(String seed)
