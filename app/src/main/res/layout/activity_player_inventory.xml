@@ -51,7 +51,7 @@
             android:textAllCaps="true"
             android:textSize="30sp"
             android:textStyle="bold" />
-        <GridView
+        <ListView
             android:id="@+id/inventoryHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

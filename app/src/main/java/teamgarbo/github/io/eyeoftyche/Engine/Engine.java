@@ -2,7 +2,6 @@ package teamgarbo.github.io.eyeoftyche.Engine;
 
 import android.content.Context;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
@@ -86,5 +85,10 @@ public class Engine {
     public void progressRoom(Room room)
     {
         world.progressRoom(room);
+    }
+
+    public String getSeed()
+    {
+        return seed;
     }
 }
