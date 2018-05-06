@@ -1,5 +1,7 @@
 package teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties;
 
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
+
 /**
  * Created by hercu on 05-May-18.
  */
@@ -21,5 +23,9 @@ public class Player {
 
     SpellBook spellBook = new SpellBook();
 
+    public void addItem(Item item)
+    {
+        inventory.addItem(item);
+    }
 
 }

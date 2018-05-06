@@ -13,4 +13,12 @@ public class Item {
         this.cost = cost;
         this.name = name;
     }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

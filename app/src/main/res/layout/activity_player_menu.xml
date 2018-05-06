@@ -36,7 +36,7 @@
             android:onClick="showInventory"
             android:text="Inventory"
             android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_console" />
@@ -50,7 +50,7 @@
             android:onClick="showSpellBook"
             android:text="Spell Book"
             android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_console" />
@@ -64,7 +64,7 @@
             android:onClick="showStats"
             android:text="Stats"
             android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_console" />

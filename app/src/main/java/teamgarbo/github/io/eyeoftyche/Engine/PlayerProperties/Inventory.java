@@ -11,5 +11,8 @@ import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
 public class Inventory {
     HashMap<Item, Integer> inventory = new HashMap<>();
 
-
+    public void addItem(Item item)
+    {
+        inventory.put(item, inventory.get(item) + 1);
+    }
 }
