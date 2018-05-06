@@ -1,5 +1,6 @@
 package teamgarbo.github.io.eyeoftyche.Engine;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
