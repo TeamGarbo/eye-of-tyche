@@ -79,42 +79,44 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         });
         builder.show();
 
-        TextView textView = view.findViewById(R.id.text_name);
-        textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getName());
-        textView = view.findViewById(R.id.text_cost);
-        textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getCost() + "");
-        if(item instanceof Weapon) {
-            textView = view.findViewById(R.id.text_first_name);
-            textView.setText("Dexterity");
-            textView = view.findViewById(R.id.text_second_name);
-            textView.setText("Strnegth");
-            Weapon weapon = (Weapon)item;
-            textView = view.findViewById(R.id.text_first);
-            textView.setText(weapon.getDex()+"");
-            textView = view.findViewById(R.id.text_second);
-            textView.setText(weapon.getStr()+"");
-        }
-        if(item instanceof Armour) {
-            textView = view.findViewById(R.id.text_first_name);
-            textView.setText("Health");
-            textView = view.findViewById(R.id.text_second_name);
-            textView.setText("Mana");
-            Armour armour = (Armour)item;
-            textView = view.findViewById(R.id.text_first);
-            textView.setText(armour.getHealth()+"");
-            textView = view.findViewById(R.id.text_second);
-            textView.setText(armour.getMana()+"");
-        }
-        if(item instanceof Consumable) {
-            textView = view.findViewById(R.id.text_first_name);
-            textView.setText("Health");
-            textView = view.findViewById(R.id.text_second_name);
-            textView.setText("Mana");
-            Consumable consumable = (Consumable)item;
-            textView = view.findViewById(R.id.text_first);
-            textView.setText(consumable.getHealth()+"");
-            textView = view.findViewById(R.id.text_second);
-            textView.setText(consumable.getMana()+"");
+        if(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem) != null) {
+            TextView textView = view.findViewById(R.id.text_name);
+            textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getName());
+            textView = view.findViewById(R.id.text_cost);
+            textView.setText(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem).getCost() + "");
+            if (item instanceof Weapon) {
+                textView = view.findViewById(R.id.text_first_name);
+                textView.setText("Dexterity");
+                textView = view.findViewById(R.id.text_second_name);
+                textView.setText("Strnegth");
+                Weapon weapon = (Weapon) item;
+                textView = view.findViewById(R.id.text_first);
+                textView.setText(weapon.getDex() + "");
+                textView = view.findViewById(R.id.text_second);
+                textView.setText(weapon.getStr() + "");
+            }
+            if (item instanceof Armour) {
+                textView = view.findViewById(R.id.text_first_name);
+                textView.setText("Health");
+                textView = view.findViewById(R.id.text_second_name);
+                textView.setText("Mana");
+                Armour armour = (Armour) item;
+                textView = view.findViewById(R.id.text_first);
+                textView.setText(armour.getHealth() + "");
+                textView = view.findViewById(R.id.text_second);
+                textView.setText(armour.getMana() + "");
+            }
+            if (item instanceof Consumable) {
+                textView = view.findViewById(R.id.text_first_name);
+                textView.setText("Health");
+                textView = view.findViewById(R.id.text_second_name);
+                textView.setText("Mana");
+                Consumable consumable = (Consumable) item;
+                textView = view.findViewById(R.id.text_first);
+                textView.setText(consumable.getHealth() + "");
+                textView = view.findViewById(R.id.text_second);
+                textView.setText(consumable.getMana() + "");
+            }
         }
     }
 
@@ -127,6 +129,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
 
     public void reforgeButton(View view)
     {
+        if(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem) != null)
         if(Engine.getInstance().getPlayer().isReforgeCharge())
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);

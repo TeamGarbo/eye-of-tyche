@@ -34,7 +34,7 @@ public class ContentGenerator {
 
     static public String reseed(String seed, int i)
     {
-        return String.valueOf((Math.abs(Integer.parseInt(seed)) * i) % Integer.MAX_VALUE);
+        return String.valueOf((Math.abs(Integer.parseInt(seed)) * i) % Integer.MAX_VALUE - i + 1000 / i * i);
     }
 
     public static int getInteger(String seed, int offset, int max)

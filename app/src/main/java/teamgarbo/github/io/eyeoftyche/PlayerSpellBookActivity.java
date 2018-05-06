@@ -67,18 +67,20 @@ public class PlayerSpellBookActivity extends AppCompatActivity {
         });
         builder.show();
 
-        TextView textView = view.findViewById(R.id.text_name);
-        textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getName());
-        textView = view.findViewById(R.id.text_cost);
-        textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getMana() + "");
-        textView = view.findViewById(R.id.text_first_name);
-        textView.setText("Health");
-        textView = view.findViewById(R.id.text_second_name);
-        textView.setText("Barcode");
-        textView = view.findViewById(R.id.text_first);
-        textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getHealth()+"");
-        textView = view.findViewById(R.id.text_second);
-        textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getBarcode()+"");
+        if(spellAdapter.getItem(spellAdapter.mSelectedItem) != null) {
+            TextView textView = view.findViewById(R.id.text_name);
+            textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getName());
+            textView = view.findViewById(R.id.text_cost);
+            textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getMana() + "");
+            textView = view.findViewById(R.id.text_first_name);
+            textView.setText("Health");
+            textView = view.findViewById(R.id.text_second_name);
+            textView.setText("Barcode");
+            textView = view.findViewById(R.id.text_first);
+            textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getHealth() + "");
+            textView = view.findViewById(R.id.text_second);
+            textView.setText(spellAdapter.getItem(spellAdapter.mSelectedItem).getBarcode() + "");
+        }
     }
 
     public void reforge(Spell spell, String barcode)
@@ -90,6 +92,7 @@ public class PlayerSpellBookActivity extends AppCompatActivity {
 
     public void reforgeSpellButton(View view)
     {
+        if(spellAdapter.getItem(spellAdapter.mSelectedItem) != null)
         if(Engine.getInstance().getPlayer().isReforgeCharge())
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(PlayerSpellBookActivity.this, R.style.AlertDialogTheme);
