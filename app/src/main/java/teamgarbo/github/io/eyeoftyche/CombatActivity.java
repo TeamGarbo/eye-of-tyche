@@ -42,7 +42,10 @@ public class CombatActivity extends AppCompatActivity {
     public void updateMobText(){
         String output = "Mob Health: " + mob.getHealth() + "\n" +
                         "Mob Mana: " + mob.getMana() + "\n" +
+                        "Mob Strenght: " + mob.getStr()+ "\n"+
+                        "Mob Dexterity"
                         "Mob Money: " + mob.getMoney() + "\n" +
+
                         "\n"+
                         "Your Health: " + engine.getPlayer().getHealth() + "\n" +
                         "Your Mana: " + engine.getPlayer().getMana() + "\n" +
