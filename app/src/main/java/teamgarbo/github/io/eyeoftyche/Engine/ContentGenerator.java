@@ -122,24 +122,36 @@ public class ContentGenerator {
     }
 
     public static String getAdjective(String seed){
-        int number = getInteger(seed,2,Globals.adjectives.length-1);
+        int number = getInteger(seed,6,Globals.adjectives.length-1);
         return Globals.adjectives[number];
     }
 
     public static String getArmourName(String seed){
-        int number = getInteger(seed,2,Globals.armour.length-1);
+        int number = getInteger(seed,3,Globals.armour.length-1);
         return getAdjective(seed) + " " + Globals.armour[number];
     }
 
     public static String getWeaponName(String seed){
-        int number = getInteger(seed,2,Globals.weapons.length-1);
+        int number = getInteger(seed,1,Globals.weapons.length-1);
         return getAdjective(seed) + " " + Globals.weapons[number];
     }
 
     public static String getConsumableName(String seed){
-        int number = getInteger(seed,2,Globals.con.length-1);
+        int number = getInteger(seed,5,Globals.con.length-1);
         return getAdjective(seed) + " " + Globals.con[number];
     }
+
+    public static String getSpellName(String seed){
+        int number = getInteger(seed,4,Globals.attacks.length-1);
+        return getElementType(seed) + " " + Globals.attacks[number];
+    }
+
+    public static String getElementType(String seed){
+        int number = getInteger(seed,2,Globals.elements.length-1);
+        return getAdjective(seed) + " " + Globals.elements[number];
+    }
+
+
 
     static public Spell generateSpell(String seed)
     {
@@ -147,7 +159,7 @@ public class ContentGenerator {
         int health = getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount());
         int mana = getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount());
 
-        return new Spell(health, mana, "Spell", seed);
+        return new Spell(health, mana, getSpellName(seed), seed);
     }
 
     static public void regenerateItem(String seed, Spell spell)
