@@ -12,7 +12,7 @@ import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Mob;
 public class World {
 
     Room currentRoom;
-
+    int roomCount = 0;
     String seed;
 
     World(String seed)
@@ -35,6 +35,7 @@ public class World {
         currentRoom = room;
         seed = room.getSeed();
         currentRoom.setMobList(getMobs());
+        roomCount ++;
     }
 
     ArrayList<Item> getChest()
@@ -56,4 +57,7 @@ public class World {
         return mobs;
     }
 
+    public int getRoomCount() {
+        return roomCount;
+    }
 }

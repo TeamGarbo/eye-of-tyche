@@ -1,5 +1,7 @@
 package teamgarbo.github.io.eyeoftyche;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +11,18 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import teamgarbo.github.io.eyeoftyche.Engine.ContentGenerator;
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
+import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Mob;
 
 public class CombatActivity extends AppCompatActivity {
 
     Engine engine;
     Mob mob;
+
+    BarcodeHandler barcodeHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,8 @@ public class CombatActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         engine = Engine.getInstance();
         mob = engine.getTopMob();
+
+        barcodeHandler = new BarcodeHandler(this,1);
 
         updateMobText();
     }
@@ -46,13 +55,68 @@ public class CombatActivity extends AppCompatActivity {
 
     public void attackMob(View view){
         //TODO attack mob
-        mob.setHealth(mob.getHealth() - engine.getPlayer().getDex());
+//        mob.setHealth(mob.getHealth() - engine.getPlayer().getDex());
+//        if(mob.getHealth()<= 0 ){
+//            engine.getPlayer().addXP(mob.getXpDrop());
+//            finish();
+//        }
+//        else{
+//            engine.getPlayer().setHealth(engine.getPlayer().getHealth() - mob.getDex());
+//        }
+
+        Player player = Engine.getInstance().getPlayer();
+
+        if(player.getMana() >= player.getCurrentSpell().getMana()) {
+            mob.setHealth(mob.getHealth() - player.getCurrentSpell().getHealth() * player.getDex() / mob.getDex());
+            player.setMana(player.getMana() - player.getCurrentSpell().getMana());
+        }
+        else
+        {
+            // out of mana
+            AlertDialog.Builder builder = new AlertDialog.Builder(CombatActivity.this, R.style.AlertDialogTheme);
+            builder.setMessage("You are out of mana!")
+                    .setTitle("Combat");
+            builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    barcodeHandler.showScanner();
+                }
+            });
+            builder.show();
+        }
+
         if(mob.getHealth()<= 0 ){
-            engine.getPlayer().addXP(mob.getXpDrop());
+            player.addXP(mob.getXpDrop());
+            player.setMoney(player.getMoney() + mob.getMoney());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(CombatActivity.this, R.style.AlertDialogTheme);
+            builder.setMessage("Mob killed...")
+                    .setTitle("Combat Result");
+            builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    barcodeHandler.showScanner();
+                }
+            });
+            builder.show();
+
             finish();
         }
         else{
-            engine.getPlayer().setHealth(engine.getPlayer().getHealth() - mob.getDex());
+            player.setHealth(player.getHealth() - mob.getDex() * mob.getDex() / player.getDex() );
+            if(player.getHealth() <= 0)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CombatActivity.this, R.style.AlertDialogTheme);
+                builder.setMessage("Oh dear, you are dead!")
+                        .setTitle("Game Over");
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        barcodeHandler.showScanner();
+                    }
+                });
+                builder.show();
+            }
         }
 
         CombatActivity.this.runOnUiThread(new Runnable() {
@@ -73,5 +137,21 @@ public class CombatActivity extends AppCompatActivity {
 
     public void scanSpell(View view){
         //TODO spells
+        barcodeHandler.showScanner();
+    }
+
+    public void addSpell(String barcode)
+    {
+        Engine.getInstance().getPlayer().addSpell(ContentGenerator.generateSpell(barcode));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String barcode = barcodeHandler.getBarcode(requestCode, resultCode, data, 1);
+        if(barcode != null)
+        {
+            addSpell(barcode);
+        }
     }
 }

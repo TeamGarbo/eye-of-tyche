@@ -9,7 +9,7 @@ public class Consumable extends Item{
     int health, mana;
 
     public Consumable(int cost, String name, int health, int mana) {
-        super(cost, name);
+        super(health + mana, name);
         this.health = health;
         this.mana = mana;
     }

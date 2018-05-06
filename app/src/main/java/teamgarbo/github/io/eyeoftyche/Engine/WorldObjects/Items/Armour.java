@@ -9,7 +9,7 @@ public class Armour extends Equipable {
     int mana, health;
 
     public Armour(int cost, String name, int mana, int health) {
-        super(cost, name);
+        super(mana + health, name);
         this.mana = mana;
         this.health = health;
     }

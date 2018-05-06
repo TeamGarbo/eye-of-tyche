@@ -3,6 +3,7 @@ package teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties;
 import java.util.ArrayList;
 
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Spell;
 
 /**
  * Created by hercu on 05-May-18.
@@ -10,21 +11,33 @@ import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
 
 public class Player {
 
-    int health;
-    int mana;
+    boolean reforgeCharge = true;
+    int reforgeCooldown = 5;
+
+    int health, maxHealth;
+    int mana, maxMana;
     int money;
     int dex;
 
     int str;
     int totalXp;
 
+    Spell currentSpell;
+
     public Player(int health, int mana, int money, int dex, int str) {
-        this.health = health;
-        this.mana = mana;
+        this.health = this.maxHealth = health;
+        this.mana = this.maxMana = mana;
         this.money = money;
         this.dex = dex;
         this.str = str;
         this.totalXp = 0;
+        Spell hit = new Spell(1,0,"Punch", "0");
+        spellBook.addSpell(hit);
+        currentSpell = hit;
+    }
+
+    public Spell getCurrentSpell() {
+        return currentSpell;
     }
 
     Inventory inventory = new Inventory();
@@ -108,5 +121,31 @@ public class Player {
 
     public void setSpellBook(SpellBook spellBook) {
         this.spellBook = spellBook;
+    }
+
+    public void addSpell(Spell spell)
+    {
+        spellBook.addSpell(spell);
+        currentSpell = spell;
+    }
+
+    public boolean isReforgeCharge() {
+        return reforgeCharge;
+    }
+
+    public int getReforgeCooldown() {
+        return reforgeCooldown;
+    }
+
+    public void setReforgeCharge(boolean reforgeCharge) {
+        this.reforgeCharge = reforgeCharge;
+    }
+
+    public void setReforgeCooldown(int reforgeCooldown) {
+        this.reforgeCooldown = reforgeCooldown;
+    }
+
+    public void setCurrentSpell(Spell currentSpell) {
+        this.currentSpell = currentSpell;
     }
 }

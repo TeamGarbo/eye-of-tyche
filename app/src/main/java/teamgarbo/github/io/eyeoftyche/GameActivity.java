@@ -37,6 +37,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
     protected void onResume(){
         super.onResume();
         updateConsoleText();

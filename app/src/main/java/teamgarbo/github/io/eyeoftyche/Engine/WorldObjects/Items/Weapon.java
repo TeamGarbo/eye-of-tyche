@@ -9,7 +9,7 @@ public class Weapon extends Equipable {
     int dex, str;
 
     public Weapon(int cost, String name, int dex, int str) {
-        super(cost, name);
+        super(dex + str, name);
         this.dex = dex;
         this.str = str;
     }

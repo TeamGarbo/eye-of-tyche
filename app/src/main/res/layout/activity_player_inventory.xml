@@ -35,7 +35,8 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="20dp"
         android:clickable="true"
-        app:srcCompat="@drawable/plus_circle" />
+        app:srcCompat="@drawable/plus_circle"
+        android:onClick="useItem"/>
 
     <LinearLayout
         android:layout_width="match_parent"

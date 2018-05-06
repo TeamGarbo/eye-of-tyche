@@ -39,9 +39,9 @@ public class ContentGenerator {
     {
         Log.e(TAG, seed+"generateRoom");
         boolean outside = getBoolean(seed, 1);
-        int chests = getInteger(seed,1, 10);
-        int mobs = getInteger(seed,2, 5);
-        int npcs = getInteger(seed,3, 2);
+        int chests = getInteger(seed,1, 3);
+        int mobs = getInteger(seed,2, 2);
+        int npcs = getInteger(seed,3, 0);
         int rooms = getInteger(seed,4, 3);
 
         return new Room("Room:"+seed, chests, mobs, npcs, rooms+1, outside, seed);
@@ -53,11 +53,11 @@ public class ContentGenerator {
         int itemNumber = getInteger(seed, 0, 3);
         switch (itemNumber) {
             case Globals.ITEM_ARMOUR:
-                return new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
+                return new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount()));
             case Globals.ITEM_CONSUMABLE:
-                return new Consumable(getInteger(seed, 1, 10), "Consumable", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
+                return new Consumable(getInteger(seed, 1, 10), "Consumable", getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount()));
             case Globals.ITEM_WEAPON:
-                return new Weapon(getInteger(seed, 1, 10), "Weapon", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
+                return new Weapon(getInteger(seed, 1, 10), "Weapon", getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount()));
         }
         return null;
     }
@@ -66,27 +66,27 @@ public class ContentGenerator {
     {
         if(item instanceof Armour)
         {
-            ((Armour) item).setArmour(new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10)));
+            ((Armour) item).setArmour(new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount())));
         }
         if(item instanceof Consumable)
         {
-            ((Consumable) item).setConsumable(new Consumable(getInteger(seed, 1, 10), "Consumable", getInteger(seed, 2, 10), getInteger(seed, 3, 10)));
+            ((Consumable) item).setConsumable(new Consumable(getInteger(seed, 1, 10), "Consumable", getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount())));
         }
         if(item instanceof Weapon)
         {
-            ((Weapon) item).setWeapon(new Weapon(getInteger(seed, 1, 10), "Weapon", getInteger(seed, 2, 10), getInteger(seed, 3, 10)));
+            ((Weapon) item).setWeapon(new Weapon(getInteger(seed, 1, 10), "Weapon", getInteger(seed, 2, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed, 3, Engine.getInstance().getWorld().getRoomCount())));
         }
     }
 
     static public Mob generateMob(String seed)
     {
         Log.e(TAG, seed+"generateMob");
-        int health = getInteger(seed,1, 10);
-        int mana = getInteger(seed,2, 10);
-        int money = getInteger(seed,3, 10);
-        int dex = getInteger(seed,4, 10);
-        int str = getInteger(seed,5, 10);
-        int xpDrop = getInteger(seed,6, 10);
+        int health = getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount());
+        int mana = getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount());
+        int money = getInteger(seed,3, Engine.getInstance().getWorld().getRoomCount() * 2);
+        int dex = getInteger(seed,4, Engine.getInstance().getWorld().getRoomCount());
+        int str = getInteger(seed,5, Engine.getInstance().getWorld().getRoomCount());
+        int xpDrop = getInteger(seed,6, Engine.getInstance().getWorld().getRoomCount());
 
         return new Mob(health, mana, money, dex, str, xpDrop);
     }
@@ -96,7 +96,7 @@ public class ContentGenerator {
         Log.e(TAG, seed+"generatePlayer");
         int health = getInteger(seed,1, 10);
         int mana = getInteger(seed,2, 10);
-        int money = getInteger(seed,3, 10);
+        int money = getInteger(seed,3, 20);
         int dex = getInteger(seed,4, 10);
         int str = getInteger(seed,5, 10);
 
@@ -106,10 +106,14 @@ public class ContentGenerator {
     static public Spell generateSpell(String seed)
     {
         Log.e(TAG, seed+"generateSpell");
-        int health = getInteger(seed,1, 10);
-        int mana = getInteger(seed,2, 10);
+        int health = getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount());
+        int mana = getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount());
 
-        return new Spell(health, mana, "Spell");
+        return new Spell(health, mana, "Spell", seed);
     }
 
+    static public void regenerateItem(String seed, Spell spell)
+    {
+        spell.setSpell(new Spell(getInteger(seed,1, Engine.getInstance().getWorld().getRoomCount()), getInteger(seed,2, Engine.getInstance().getWorld().getRoomCount()), "Spell", seed));
+    }
 }

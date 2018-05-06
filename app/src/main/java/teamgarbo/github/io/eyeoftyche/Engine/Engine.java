@@ -35,6 +35,11 @@ public class Engine {
         return instance;
     }
 
+    public World getWorld()
+    {
+        return world;
+    }
+
     public Engine(){
         pastCodes = new ArrayList<String>();
     }
@@ -86,6 +91,12 @@ public class Engine {
     public void progressRoom(Room room)
     {
         world.progressRoom(room);
+        player.setReforgeCooldown(player.getReforgeCooldown() - 1);
+        if(player.getReforgeCooldown() <= 0)
+        {
+            player.setReforgeCharge(true);
+            player.setReforgeCooldown(5);
+        }
     }
 
     public String getSeed()

@@ -12,4 +12,13 @@ public class SpellBook {
 
     ArrayList<Spell> spellBook = new ArrayList<>();
 
+    public void addSpell(Spell spell)
+    {
+        spellBook.add(spell);
+    }
+
+    public ArrayList<Spell> getSpellBook()
+    {
+        return spellBook;
+    }
 }

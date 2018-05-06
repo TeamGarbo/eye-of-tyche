@@ -14,8 +14,17 @@
         android:layout_gravity="bottom|center"
         android:layout_margin="20dp"
         android:clickable="true"
+        android:onClick="reforgeSpellButton"
         app:srcCompat="@drawable/eye" />
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/item_info"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/information_outline"
+        android:onClick="itemInfo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,11 +42,11 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <GridView
-            android:id="@+id/inventoryHolder"
+        <ListView
+            android:id="@+id/spellbookHolder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="50dp" />
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </FrameLayout>

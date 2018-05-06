@@ -11,10 +11,10 @@ public class Mob {
     public Mob(int health, int mana, int money, int dex, int str, int xpDrop) {
         this.health = health;
         this.mana = mana;
-        this.money = money;
+        this.money = health * mana;
         this.dex = dex;
         this.str = str;
-        this.xpDrop = xpDrop;
+        this.xpDrop = health * str + mana* dex;
     }
 
     public int getHealth() {

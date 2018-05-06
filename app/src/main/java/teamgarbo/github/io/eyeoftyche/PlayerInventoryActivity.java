@@ -119,28 +119,46 @@ public class PlayerInventoryActivity extends AppCompatActivity {
 
     public void reforge(Item item, String barcode)
     {
+        Engine.getInstance().getPlayer().setReforgeCharge(false);
         ContentGenerator.regenerateItem(barcode, item);
         itemInfo(null);
     }
 
     public void reforgeButton(View view)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
-        builder.setMessage("Are you sure you want to re-roll stats?")
+        if(Engine.getInstance().getPlayer().isReforgeCharge())
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
+            builder.setMessage("Are you sure you want to re-roll stats?")
                 .setTitle("Eye of Tyche");
-        builder.setPositiveButton("Re-roll", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("Re-roll", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 barcodeHandler.showScanner();
             }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 // User cancelled the dialog
             }
-        });
-        builder.show();
+            });
+            builder.show();
+
+        }
+        else
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
+            builder.setMessage("No charge left for reforge.")
+                    .setTitle("Eye of Tyche");
+            builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    barcodeHandler.showScanner();
+                }
+            });
+            builder.show();
+        }
 
     }
 
@@ -152,5 +170,30 @@ public class PlayerInventoryActivity extends AppCompatActivity {
         {
             reforge(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem), barcode);
         }
+    }
+
+    public void useItem(Item item)
+    {
+
+    }
+
+    public void useItem(View view)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(PlayerInventoryActivity.this, R.style.AlertDialogTheme);
+        builder.setMessage("Are you sure you want to use this item stats?")
+                .setTitle("Use Item");
+        builder.setPositiveButton("Use", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            useItem(inventoryAdapter.getItem(inventoryAdapter.mSelectedItem));
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        builder.show();
     }
 }
