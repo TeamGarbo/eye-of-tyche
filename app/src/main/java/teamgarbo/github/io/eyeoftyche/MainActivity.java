@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
 
@@ -26,19 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void init(){
         Engine.getInstance();
-        vibrate(500);
-        //Initialise global variables, get permissions, etc.
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        MainActivity.this.runOnUiThread(new Runnable() {
-            public void run() {
-                initMainMenu();
-            }
-        });
     }
 
     public void initMainMenu(){
@@ -52,5 +40,14 @@ public class MainActivity extends AppCompatActivity {
         v.vibrate(millis);
     }
 
+    public void startApp(View view)
+    {
+        vibrate(500);
+        MainActivity.this.runOnUiThread(new Runnable() {
+            public void run() {
+                initMainMenu();
+            }
+        });
+    }
 
 }
