@@ -15,7 +15,8 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:clickable="true"
-        app:srcCompat="@drawable/information_outline" />
+        app:srcCompat="@drawable/information_outline"
+        android:onClick="itemInfo"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/item_tyche"
@@ -24,7 +25,8 @@
         android:layout_gravity="bottom|center"
         android:layout_margin="20dp"
         android:clickable="true"
-        app:srcCompat="@drawable/eye" />
+        app:srcCompat="@drawable/eye"
+        android:onClick="reforgeButton"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/item_equipt"

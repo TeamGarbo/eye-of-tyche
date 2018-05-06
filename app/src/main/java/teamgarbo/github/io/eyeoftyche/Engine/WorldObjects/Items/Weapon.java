@@ -13,4 +13,12 @@ public class Weapon extends Equipable {
         this.dex = dex;
         this.str = str;
     }
+
+    public int getDex() {
+        return dex;
+    }
+
+    public int getStr() {
+        return str;
+    }
 }

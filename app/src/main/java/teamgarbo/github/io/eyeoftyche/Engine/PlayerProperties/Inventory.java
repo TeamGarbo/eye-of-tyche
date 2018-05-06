@@ -21,4 +21,14 @@ public class Inventory {
     {
         return new ArrayList<Item>(inventory.keySet());
     }
+
+    public void removeItem(Item item)
+    {
+        if(inventory.get(item) != null) {
+            if (inventory.get(item) > 1)
+                inventory.put(item, inventory.get(item) - 1);
+            else
+                inventory.remove(item);
+        }
+    }
 }

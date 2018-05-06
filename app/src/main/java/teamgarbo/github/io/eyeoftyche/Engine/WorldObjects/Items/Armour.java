@@ -13,4 +13,12 @@ public class Armour extends Equipable {
         this.mana = mana;
         this.health = health;
     }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public int getHealth() {
+        return health;
+    }
 }
