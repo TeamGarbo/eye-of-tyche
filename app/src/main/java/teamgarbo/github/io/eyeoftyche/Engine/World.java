@@ -19,6 +19,7 @@ public class World {
     {
         this.seed = seed;
         currentRoom = new Room("Your house.", 10, 0,1,1,false, seed);
+        currentRoom.setMobList(getMobs());
     }
 
     ArrayList<Room> getRooms()
