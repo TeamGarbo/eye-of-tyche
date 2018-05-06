@@ -226,4 +226,88 @@ public class GameActivity extends AppCompatActivity {
             builder.show();
         }
     }
+
+    public void trade(View view)
+    {
+        if(engine.getCurrentRoom().getNpcs() > 0) {
+            final ItemAdapter adapter = engine.getTrade(this);
+            if (adapter == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+                builder.setTitle("Nothing left to trade.");
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.show();
+
+                return;
+            }
+
+            final AlertDialog builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme).create();
+            builder.setTitle("Items for sale (your money = " + Engine.getInstance().getPlayer().getMoney() + "):");
+
+            View v = LayoutInflater.from(this).inflate(R.layout.item_list_holder, null, false);
+            ListView listView = v.findViewById(R.id.list_item_list_holder);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    final Item item = (Item) adapterView.getItemAtPosition(i);
+                    if (item != null) {
+                        if (engine.getPlayer().getMoney() >= item.getCost()) {
+                            engine.getPlayer().setMoney(engine.getPlayer().getMoney() - item.getCost());
+                            engine.getPlayer().addItem(item);
+                            GameActivity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    appendText(item.getName() + " obtained!");
+                                }
+                            });
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this, R.style.AlertDialogTheme);
+                            builder.setTitle("Not enough funds.");
+
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            builder.show();
+                            return;
+                        }
+                    }
+                    builder.dismiss();
+                }
+            });
+            builder.setView(listView);
+
+            builder.setButton(Dialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+        }
+        else
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this, R.style.AlertDialogTheme);
+            builder.setTitle("No one to trade!");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builder.show();
+        }
+    }
 }

@@ -14,6 +14,7 @@ public class World {
 
     Room currentRoom;
     int roomCount = 10;
+    int trades = 5;
     String seed;
 
     World(String seed)
@@ -37,6 +38,7 @@ public class World {
         seed = room.getSeed();
         currentRoom.setMobList(getMobs());
         roomCount ++;
+        trades = 5;
     }
 
     ArrayList<Item> getChest()
@@ -45,6 +47,18 @@ public class World {
             ArrayList<Item> items = new ArrayList<>();
             items.add(ContentGenerator.generateItem(ContentGenerator.reseed(seed, currentRoom.chests)));
             currentRoom.chests--;
+            return items;
+        }
+        return null;
+    }
+
+    ArrayList<Item> getTrade()
+    {
+        if(trades > 0) {
+            ArrayList<Item> items = new ArrayList<>();
+            for(int i = 1; i <= trades; ++i)
+                items.add(ContentGenerator.generateItem(ContentGenerator.reseed(seed, trades / i % 1000)));
+            trades--;
             return items;
         }
         return null;

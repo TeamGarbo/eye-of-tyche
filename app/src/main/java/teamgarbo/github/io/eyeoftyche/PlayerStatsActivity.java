@@ -26,6 +26,8 @@ public class PlayerStatsActivity extends AppCompatActivity {
 
                 "Your Health: " + player.getHealth() + "\n" +
                 "Your Mana: " + player.getMana() + "\n" +
+                "Your Max Health: " + player.getMaxHealth() + "\n" +
+                "Your Max Mana: " + player.getMaxMana() + "\n" +
                 "Your Money: " + player.getMoney() + "\n"+
                 "Your Strenght: " + player.getStr()+ "\n"+
                 "Your Dexterity: " + player.getDex() + "\n"+

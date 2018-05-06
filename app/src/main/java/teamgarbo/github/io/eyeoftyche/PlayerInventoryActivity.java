@@ -69,14 +69,28 @@ public class PlayerInventoryActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
             }
         });
-        builder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                Engine.getInstance().getPlayer().removeItem(item);
-                inventoryAdapter.setObjects(Engine.getInstance().getPlayer().getInventory());
-                inventoryAdapter.notifyDataSetChanged();
-            }
-        });
+        if(Engine.getInstance().getCurrentRoom().getNpcs() > 0)
+        {
+            builder.setNegativeButton("Sell", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    Engine.getInstance().getPlayer().removeItem(item);
+                    Engine.getInstance().getPlayer().setMoney(Engine.getInstance().getPlayer().getMoney() + item.getCost());
+                    inventoryAdapter.setObjects(Engine.getInstance().getPlayer().getInventory());
+                    inventoryAdapter.notifyDataSetChanged();
+                }
+            });
+        }
+        else {
+            builder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    Engine.getInstance().getPlayer().removeItem(item);
+                    inventoryAdapter.setObjects(Engine.getInstance().getPlayer().getInventory());
+                    inventoryAdapter.notifyDataSetChanged();
+                }
+            });
+        }
         builder.show();
 
 
@@ -88,7 +102,7 @@ public class PlayerInventoryActivity extends AppCompatActivity {
                 textView = view.findViewById(R.id.text_first_name);
                 textView.setText("Dexterity");
                 textView = view.findViewById(R.id.text_second_name);
-                textView.setText("Strnegth");
+                textView.setText("Strength");
                 Weapon weapon = (Weapon) item;
                 textView = view.findViewById(R.id.text_first);
                 textView.setText(weapon.getDex() + "");

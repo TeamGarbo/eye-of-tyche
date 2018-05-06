@@ -80,6 +80,15 @@ public class Engine {
             return null;
     }
 
+    public ItemAdapter getTrade(Context context)
+    {
+        ArrayList<Item> items = world.getTrade();
+        if(items!=null)
+            return new ItemAdapter(context, items);
+        else
+            return null;
+    }
+
     public Room getCurrentRoom(){
         return world.currentRoom;
     }

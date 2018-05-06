@@ -61,7 +61,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         TextView labelView = rowView.findViewById(R.id.row_item_name);
 
         // 4. Set the text for textView
-        labelView.setText(item.getName());
+        labelView.setText(item.getName() + " (worth " + item.getCost() + ")");
 
 
         // 5. return rowView

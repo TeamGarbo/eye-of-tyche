@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/text_console"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_marginBottom="17dp"
             android:layout_marginEnd="11dp"
             android:layout_marginStart="11dp"
@@ -34,13 +34,13 @@
         <EditText
             android:id="@+id/TEXT_STATUS_ID"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:textColor="@android:color/holo_orange_light"
-            android:background="@null"
-            android:editable="false"
-            android:cursorVisible="false"
+            android:layout_height="80dp"
             android:layout_marginBottom="10dp"
-            android:gravity="bottom"/>
+            android:background="@null"
+            android:cursorVisible="false"
+            android:editable="false"
+            android:gravity="bottom"
+            android:textColor="@android:color/holo_orange_light" />
 
         <Button
             android:id="@+id/buttonInventory"
@@ -78,6 +78,20 @@
             android:background="@android:color/holo_orange_light"
             android:onClick="attack"
             android:text="Attack Mobs"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPlayerMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLook" />
+
+        <Button
+            android:id="@+id/buttonTrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:background="@android:color/holo_orange_light"
+            android:onClick="trade"
+            android:text="Trade"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/buttonPlayerMenu"
             app:layout_constraintEnd_toEndOf="parent"
