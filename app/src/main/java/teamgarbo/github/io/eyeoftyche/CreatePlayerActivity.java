@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
+import teamgarbo.github.io.eyeoftyche.Engine.Globals;
 
 public class CreatePlayerActivity extends AppCompatActivity {
 
@@ -21,8 +22,8 @@ public class CreatePlayerActivity extends AppCompatActivity {
     }
 
     public void setPlayer(View view){
-        engine.getGlobals().PLAYER_NAME = ((TextView) findViewById(R.id.editText)).getText().toString();
-        engine.getGlobals().STARTED = true;
+        Globals.PLAYER_NAME = ((TextView) findViewById(R.id.editText)).getText().toString();
+        Globals.STARTED = true;
 
         Intent myIntent = new Intent(CreatePlayerActivity.this, MainMenuActivity.class);
         startActivity(myIntent);

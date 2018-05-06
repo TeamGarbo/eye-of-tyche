@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_orange_light"
     tools:context="teamgarbo.github.io.eyeoftyche.PlayerSpellBookActivity">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/item_tyche2"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/eye" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,4 +40,4 @@
             android:layout_margin="50dp" />
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

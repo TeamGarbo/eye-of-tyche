@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
+import teamgarbo.github.io.eyeoftyche.Engine.Globals;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void start(View view){
-        if(engine.getGlobals().STARTED){
+        if(Globals.STARTED){
             Intent myIntent = new Intent(MainMenuActivity.this, GameActivity.class);
             startActivity(myIntent);
         }

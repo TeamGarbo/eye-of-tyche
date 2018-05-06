@@ -1,6 +1,10 @@
 package teamgarbo.github.io.eyeoftyche.Engine;
 
+import android.content.Context;
+
 import java.util.ArrayList;
+
+import teamgarbo.github.io.eyeoftyche.RoomAdapter;
 
 /**
  * Created by Shan on 05/05/2018.
@@ -10,7 +14,10 @@ public class Engine {
 
     //Variables
     ArrayList<String> pastCodes;
-    Globals globals;
+
+    World world;
+
+    String seed = Globals.DEFULT_SEED;
 
     private static Engine instance;
 
@@ -23,12 +30,20 @@ public class Engine {
 
     public Engine(){
         pastCodes = new ArrayList<String>();
-        globals = new Globals();
+        world = new World(seed);
     }
-
-    public Globals getGlobals(){return globals;}
 
     public ArrayList<String> getPastCodes(){
         return pastCodes;
+    }
+
+    public RoomAdapter getRoomList(Context context)
+    {
+        return new RoomAdapter(context, world.getRooms());
+    }
+
+    public void progressRoom(Room room)
+    {
+        world.progressRoom(room);
     }
 }

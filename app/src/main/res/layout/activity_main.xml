@@ -8,7 +8,7 @@
     tools:context="teamgarbo.github.io.eyeoftyche.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_console"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Eye of Tyche"
@@ -23,7 +23,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/text_console"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/eye" />

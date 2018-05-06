@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonOption4" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_console"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="17dp"
@@ -44,12 +44,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:background="@color/colorPrimary"
-        android:text="Option 1"
+        android:onClick="progressRoom"
+        android:text="Select Room"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/text_console" />
 
     <Button
         android:id="@+id/buttonOption2"
