@@ -2,6 +2,7 @@ package teamgarbo.github.io.eyeoftyche.Engine;
 
 import android.util.Log;
 
+import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Armour;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Consumable;
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
@@ -49,7 +50,7 @@ public class ContentGenerator {
     static public Item generateItem(String seed)
     {
         Log.e(TAG, seed+"generateItem");
-        int itemNumber = getInteger(seed, 9, 3);
+        int itemNumber = getInteger(seed, 0, 3);
         switch (itemNumber) {
             case Globals.ITEM_ARMOUR:
                 return new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
@@ -72,6 +73,18 @@ public class ContentGenerator {
         int xpDrop = getInteger(seed,6, 10);
 
         return new Mob(health, mana, money, dex, str, xpDrop);
+    }
+
+    static public Player generatePlayer(String seed)
+    {
+        Log.e(TAG, seed+"generatePlayer");
+        int health = getInteger(seed,1, 10);
+        int mana = getInteger(seed,2, 10);
+        int money = getInteger(seed,3, 10);
+        int dex = getInteger(seed,4, 10);
+        int str = getInteger(seed,5, 10);
+
+        return new Player(health, mana, money, dex, str);
     }
 
     static public Spell generateSpell(String seed)

@@ -17,10 +17,12 @@ public class BarcodeHandler {
 
     private Context context;
     private String lastBarcode = "";
+    private int offset = 0;
 
-    BarcodeHandler(Context context)
+    BarcodeHandler(Context context, int offset)
     {
         this.context = context;
+        this.offset = offset;
     }
 
     public static final int RC_BARCODE_CAPTURE = 9001;
@@ -30,12 +32,12 @@ public class BarcodeHandler {
         Intent intent;
         intent = new Intent(context, BarcodeCaptureActivity.class);
         intent.putExtra(BarcodeCaptureActivity.AutoFocus, true);
-        ((Activity)context).startActivityForResult(intent, RC_BARCODE_CAPTURE);
+        ((Activity)context).startActivityForResult(intent, RC_BARCODE_CAPTURE + offset);
     }
 
-    public String getBarcode(int requestCode, int resultCode, Intent data)
+    public String getBarcode(int requestCode, int resultCode, Intent data, int offset)
     {
-        if (requestCode == RC_BARCODE_CAPTURE && resultCode == CommonStatusCodes.SUCCESS) {
+        if (requestCode == RC_BARCODE_CAPTURE + offset && resultCode == CommonStatusCodes.SUCCESS) {
             if (data != null) {
                 Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                 return barcode.displayValue;

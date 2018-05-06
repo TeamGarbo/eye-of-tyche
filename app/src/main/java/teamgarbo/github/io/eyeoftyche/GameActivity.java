@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import teamgarbo.github.io.eyeoftyche.Engine.Engine;
 import teamgarbo.github.io.eyeoftyche.Engine.Room;
+import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -49,6 +50,68 @@ public class GameActivity extends AppCompatActivity {
                 //some form of penalisation
             }
         }
+    }
+
+    public void openPlayerMennu(View view)
+    {
+        Intent myIntent = new Intent(GameActivity.this, PlayerMenuActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void lookForItems(View view)
+    {
+
+        final ItemAdapter adapter = engine.getChest(this);
+        if(adapter == null)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("No items found.");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builder.show();
+
+            return;
+        }
+
+        final AlertDialog builder = new AlertDialog.Builder(this).create();
+        builder.setTitle("Items from chest:");
+
+        View v = LayoutInflater.from(this).inflate(R.layout.item_list_holder, null, false);
+        ListView listView = v.findViewById(R.id.list_item_list_holder);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = (Item) adapterView.getItemAtPosition(i);
+                if (item != null)
+                {
+                    engine.getPlayer().addItem(item);
+                    GameActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            appendText("Item obtained!");
+                        }
+                    });
+
+                }
+                builder.dismiss();
+            }
+        });
+        builder.setView(listView);
+
+        builder.setButton(Dialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 
     public void progressRoom(View view)

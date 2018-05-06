@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOption4" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayerMenu" />
 
     <TextView
         android:id="@+id/text_console"
@@ -47,48 +47,49 @@
         android:onClick="progressRoom"
         android:text="Select Room"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOption2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_console" />
 
     <Button
-        android:id="@+id/buttonOption2"
+        android:id="@+id/buttonLook"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        android:text="Option 2"
+        android:onClick="lookForItems"
+        android:text="Look"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOption3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInteract"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonInventory" />
 
     <Button
-        android:id="@+id/buttonOption3"
+        android:id="@+id/buttonInteract"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:background="@color/colorPrimary"
-        android:text="Option 3"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOption4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPlayerMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOption2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLook" />
 
     <Button
-        android:id="@+id/buttonOption4"
+        android:id="@+id/buttonPlayerMenu"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary"
-        android:text="Option 4"
+        android:onClick="openPlayerMennu"
+        android:text="Player Menu"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/buttonScan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOption3" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonInteract" />
 
 </android.support.constraint.ConstraintLayout>
