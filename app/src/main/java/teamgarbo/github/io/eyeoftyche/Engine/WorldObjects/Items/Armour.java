@@ -21,4 +21,17 @@ public class Armour extends Equipable {
     public int getHealth() {
         return health;
     }
+
+    public void setArmour(int cost, String name, int health, int mana)
+    {
+        setEquipable(cost, name);
+        this.health = health;
+        this.mana = mana;
+    }
+    public void setArmour(Armour armour)
+    {
+        setEquipable(armour.getCost(), armour.getName());
+        this.health = armour.getHealth();
+        this.mana = armour.getMana();
+    }
 }

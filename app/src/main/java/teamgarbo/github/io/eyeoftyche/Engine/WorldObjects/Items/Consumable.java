@@ -21,4 +21,18 @@ public class Consumable extends Item{
     public int getHealth() {
         return health;
     }
+
+    public void setConsumable(int cost, String name, int health, int mana)
+    {
+        setItem(cost, name);
+        this.health = health;
+        this.mana = mana;
+    }
+
+    public void setConsumable(Consumable consumable)
+    {
+        setItem(consumable.getCost(), consumable.getName());
+        this.health = consumable.getHealth();
+        this.mana = consumable.getMana();
+    }
 }

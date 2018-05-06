@@ -9,4 +9,9 @@ public class Equipable extends Item{
     public Equipable(int cost, String name) {
         super(cost, name);
     }
+
+    public void setEquipable(int cost, String name)
+    {
+        setItem(cost, name);
+    }
 }

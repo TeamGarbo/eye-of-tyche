@@ -62,15 +62,20 @@ public class ContentGenerator {
         return null;
     }
 
-    static public Item regenerateItem(String seed, Item item)
+    static public void regenerateItem(String seed, Item item)
     {
         if(item instanceof Armour)
-            return new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
+        {
+            ((Armour) item).setArmour(new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10)));
+        }
         if(item instanceof Consumable)
-            return new Consumable(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
+        {
+            ((Consumable) item).setConsumable(new Consumable(getInteger(seed, 1, 10), "Consumable", getInteger(seed, 2, 10), getInteger(seed, 3, 10)));
+        }
         if(item instanceof Weapon)
-            return new Weapon(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10));
-        return null;
+        {
+            ((Weapon) item).setWeapon(new Weapon(getInteger(seed, 1, 10), "Weapon", getInteger(seed, 2, 10), getInteger(seed, 3, 10)));
+        }
     }
 
     static public Mob generateMob(String seed)
