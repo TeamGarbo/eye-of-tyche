@@ -1,0 +1,20 @@
+breastplate
+legplate
+helm
+helmet
+robe
+torso
+boots
+gloves
+tunic
+scarf
+hat
+greaves
+leather belt
+hide chest
+hide legs
+hide boots
+coif
+plated gloves
+full helm
+spiked helm
