@@ -37,10 +37,13 @@ public class World {
 
     ArrayList<Item> getChest()
     {
-        ArrayList<Item> items = new ArrayList<>();
-        for(int i = 1; i <= currentRoom.chests; ++i)
-            items.add(ContentGenerator.generateItem(ContentGenerator.reseed(seed,i)));
-        return items;
+        if(currentRoom.chests > 0) {
+            ArrayList<Item> items = new ArrayList<>();
+            items.add(ContentGenerator.generateItem(ContentGenerator.reseed(seed, currentRoom.chests)));
+            currentRoom.chests--;
+            return items;
+        }
+        return null;
     }
 
     ArrayList<Mob> getMobs()

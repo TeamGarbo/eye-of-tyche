@@ -50,7 +50,7 @@ public class ContentGenerator {
     static public Item generateItem(String seed)
     {
         Log.e(TAG, seed+"generateItem");
-        int itemNumber = getInteger(seed, 9, 3);
+        int itemNumber = getInteger(seed, 0, 3);
         switch (itemNumber) {
             case Globals.ITEM_ARMOUR:
                 return new Armour(getInteger(seed, 1, 10), "Armour", getInteger(seed, 2, 10), getInteger(seed, 3, 10));

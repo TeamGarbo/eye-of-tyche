@@ -60,10 +60,27 @@ public class GameActivity extends AppCompatActivity {
 
     public void lookForItems(View view)
     {
-        final AlertDialog builder = new AlertDialog.Builder(this).create();
-        builder.setTitle("Items from chest:");
 
         final ItemAdapter adapter = engine.getChest(this);
+        if(adapter == null)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("No items found.");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builder.show();
+
+            return;
+        }
+
+        final AlertDialog builder = new AlertDialog.Builder(this).create();
+        builder.setTitle("Items from chest:");
 
         View v = LayoutInflater.from(this).inflate(R.layout.item_list_holder, null, false);
         ListView listView = v.findViewById(R.id.list_item_list_holder);

@@ -2,6 +2,7 @@ package teamgarbo.github.io.eyeoftyche.Engine;
 
 import android.content.Context;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties.Player;
@@ -49,7 +50,11 @@ public class Engine {
 
     public ItemAdapter getChest(Context context)
     {
-        return new ItemAdapter(context, world.getChest());
+        ArrayList<Item> items = world.getChest();
+        if(items!=null)
+            return new ItemAdapter(context, items);
+        else
+            return null;
     }
 
     public Player getPlayer() {
