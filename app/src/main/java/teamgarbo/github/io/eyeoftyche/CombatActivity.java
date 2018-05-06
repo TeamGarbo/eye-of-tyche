@@ -50,10 +50,9 @@ public class CombatActivity extends AppCompatActivity {
         Intent myIntent = new Intent(CombatActivity.this, PlayerSpellBookActivity.class);
         startActivity(myIntent);
     }
-
+    
     public void runAway(View view){
-        Intent myIntent = new Intent(CombatActivity.this, GameActivity.class);
-        startActivity(myIntent);
+        finish();
     }
 
     public void scanSpell(View view){

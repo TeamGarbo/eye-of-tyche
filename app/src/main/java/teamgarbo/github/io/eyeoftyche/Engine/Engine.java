@@ -94,8 +94,10 @@ public class Engine {
     }
 
     public Mob getTopMob(){
-        Mob mob = world.getMobs().get(0);
-        world.getMobs().remove(mob);
+        Mob mob = world.currentRoom.getMobList().get(0);
+        if(world.currentRoom.mobList.size()>0)
+            world.currentRoom.setMobs(world.currentRoom.getMobs() - 1);
+            world.currentRoom.getMobList().remove(mob);
         return mob;
     }
 }
