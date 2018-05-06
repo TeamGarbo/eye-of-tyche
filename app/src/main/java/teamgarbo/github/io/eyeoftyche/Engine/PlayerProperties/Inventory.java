@@ -1,5 +1,6 @@
 package teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
@@ -13,6 +14,11 @@ public class Inventory {
 
     public void addItem(Item item)
     {
-        inventory.put(item, inventory.get(item) + 1);
+        inventory.put(item, inventory.get(item) != null ? inventory.get(item) + 1 : 1);
+    }
+
+    public ArrayList<Item> getItemsList()
+    {
+        return new ArrayList<Item>(inventory.keySet());
     }
 }

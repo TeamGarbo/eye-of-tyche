@@ -1,5 +1,7 @@
 package teamgarbo.github.io.eyeoftyche.Engine.PlayerProperties;
 
+import java.util.ArrayList;
+
 import teamgarbo.github.io.eyeoftyche.Engine.WorldObjects.Items.Item;
 
 /**
@@ -26,6 +28,11 @@ public class Player {
     public void addItem(Item item)
     {
         inventory.addItem(item);
+    }
+
+    public ArrayList<Item> getInventory()
+    {
+       return inventory.getItemsList();
     }
 
 }
